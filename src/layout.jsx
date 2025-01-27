@@ -1,21 +1,20 @@
 import PropTypes from 'prop-types'
-import './global.css'
 
 import Header from './components/layout/Header.jsx'
 import Footer from './components/layout/Footer.jsx'
 
-function Layout({ child }) {
+function Layout({ children }) {
   return (
     <>
       <Header />
-      {child}
+      {children}
       <Footer />
     </>
   )
 }
 
 Layout.propTypes = {
-  child: PropTypes.element
+  children: PropTypes.array
 }
 
 export default Layout
