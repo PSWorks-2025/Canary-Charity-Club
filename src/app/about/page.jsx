@@ -1,11 +1,5 @@
-
 function AboutPage() {
-
-  return (
-    <div>
-      ken gay
-    </div>
-  )
+  return <div>ken gay</div>;
 }
 
-export default AboutPage
+export default AboutPage;

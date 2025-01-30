@@ -18,7 +18,7 @@ const stats = {
   stat_3: {
     title: "Số dự án đã làm",
     data: "+199",
-  }
+  },
 };
 
 const events = {
@@ -42,7 +42,7 @@ const events = {
       "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quas possimus quis nihil unde eum. Magnam harum eligendi itaque veniam. Corporis laboriosam architecto necessitatibus officiis consequatur obcaecati, reprehenderit animi perspiciatis cupiditate.",
     href: "#",
     imageUrl: cover,
-  }
+  },
 };
 
 const stories = {
@@ -73,7 +73,7 @@ const stories = {
       "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quas possimus quis nihil unde eum. Magnam harum eligendi itaque veniam.",
     href: "#",
     imageUrl: cover,
-  }
+  },
 };
 
 function HomePage() {
@@ -155,8 +155,7 @@ function HomePage() {
                   title={story.title}
                   description={story.description}
                 />
-              ))
-            }
+              ))}
           </ScrollList>
         </div>
       </div>
