@@ -7,10 +7,14 @@ import Layout from "./layout.jsx";
 
 import HomePage from "./app/page.jsx";
 import AboutPage from "./app/about/page.jsx";
+
 import EachStoryPage from "./app/EachStoryPage.jsx";
 import FundraisingPage from "./app/FundraisingPage.jsx";
 
 import { mockData, mockStory } from "./MockData/page56MockData.js";
+
+import Events from "./app/events/page.jsx";
+import Story from "./app/story/page.jsx";
 
 const root = document.getElementById("root");
 createRoot(root).render(
@@ -50,6 +54,22 @@ createRoot(root).render(
         element={
           <Layout>
             <FundraisingPage {...mockData} />
+          </Layout>
+        }
+      />
+      <Route
+        path="/events"
+        element={
+          <Layout>
+            <Events />
+          </Layout>
+        }
+      />
+      <Route
+        path="/story"
+        element={
+          <Layout>
+            <Story />
           </Layout>
         }
       />

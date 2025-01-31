@@ -1,5 +1,4 @@
 import logo from "/images/logo.png";
-
 function Header() {
   return (
     <div className="w-full h-20 shadow-md shadow-gray-200 bg-primary text-primary-paragraph">
@@ -25,22 +24,23 @@ function Header() {
         "
       >
         <li>
-          <a href="#">
+          <a href="/">
             <div>Trang chủ</div>
           </a>
         </li>
         <li>
-          <a href="#">
+          <a href="/about">
             <div>Về Canary</div>
           </a>
         </li>
         <li>
-          <a href="#">
+          <a href="/events">
             <div>Sự kiện</div>
           </a>
         </li>
         <li>
           <a href="/eachStory">
+          <a href="/story">
             <div>Câu chuyện</div>
           </a>
         </li>
