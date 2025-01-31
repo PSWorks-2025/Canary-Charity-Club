@@ -1,8 +1,11 @@
-import logo from '/images/logo.png'
+import logo from "/images/logo.png";
 function Header() {
   return (
     <div className="w-full h-20 shadow-md shadow-gray-200 bg-primary text-primary-paragraph">
-      <div className="absolute left-36 w-20 h-20 bg-cover bg-center" style={{backgroundImage: `url("${logo}")`}}></div>
+      <div
+        className="absolute left-36 w-20 h-20 bg-cover bg-center"
+        style={{ backgroundImage: `url("${logo}")` }}
+      ></div>
       <ul
         className="
         grow-1
@@ -36,12 +39,13 @@ function Header() {
           </a>
         </li>
         <li>
+          <a href="/eachStory">
           <a href="/story">
             <div>Câu chuyện</div>
           </a>
         </li>
         <li>
-          <a href="#">
+          <a href="/donate">
             <div>Ủng hộ</div>
           </a>
         </li>
