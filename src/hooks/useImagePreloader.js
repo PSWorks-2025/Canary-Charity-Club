@@ -25,7 +25,7 @@ const useImagePreloader = (imageUrls) => {
         await Promise.all(imagePromises);
         if (isMounted) setImagesLoaded(true);
       } catch (error) {
-        console.error("One or more images failed to load.");
+        console.error("One or more images failed to load.", error);
         if (isMounted) setImagesLoaded(false);
       }
     };

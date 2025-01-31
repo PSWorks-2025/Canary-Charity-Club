@@ -3,7 +3,7 @@ import wave from "/images/wave.svg";
 import {
   ScrollStoryList,
   ScrollStoryListItem,
-} from "../components/blocks/ScrollStoryList.jsx";
+} from "../components/Lists/ScrollStoryList.jsx";
 
 const stats = {
   stat_0: {
@@ -84,7 +84,10 @@ function HomePage() {
     <div className="w-full">
       <div
         className="w-full h-178 bg-cover bg-center"
-        style={{ backgroundImage: `url("${cover}")` }}
+        style={{
+          backgroundImage: `url("${cover}")`,
+          height: "calc(100vh - 5rem)",
+        }}
       ></div>
       <div className="w-full h-64 -mt-20 flex justify-center">
         {Object.entries(stats)

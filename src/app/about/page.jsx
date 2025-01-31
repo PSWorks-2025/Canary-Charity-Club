@@ -2,15 +2,16 @@ import cover from "/images/cover_2.jpg";
 import {
   ScrollStoryList,
   ScrollStoryListItem,
-} from "../../components/blocks/ScrollStoryList.jsx";
+} from "../../components/Lists/ScrollStoryList.jsx";
 import {
   ScrollMemberList,
   ScrollMemberListItem,
-} from "../../components/blocks/ScrollMemberList.jsx";
+} from "../../components/Lists/ScrollMemberList.jsx";
 import {
   ActivityHistoryList,
   ActivityHistoryListItem,
-} from "../../components/blocks/ActivityHistoryList.jsx";
+} from "../../components/Lists/ActivityHistoryList.jsx";
+import ProjectLayout from "../../components/ProjectLayout/ProjectLayout";
 
 const stories = {
   story_0: {
@@ -112,9 +113,10 @@ function Aboutpage() {
   return (
     <div className="w-full">
       <div
-        className="w-full h-178 bg-cover bg-bottom flex justify-center items-end bg-blend-multipy"
+        className="w-full bg-cover bg-bottom flex justify-center items-end bg-blend-multipy"
         style={{
           backgroundImage: `linear-gradient(rgba(0, 0, 0, 0),rgba(0, 0, 0, 0.8)), url("${cover}")`,
+          height: "calc(100vh - 5rem)",
         }}
       >
         <div className="w-280">
@@ -214,38 +216,22 @@ function Aboutpage() {
         </div>
         <ActivityHistoryList>
           {Object.entries(activityHistory)
-          .map(([key, activity]) => [key.slice(9), activity])
-          .sort((a, b) => a[0] - b[0])
-          .map(([key, activity]) => (
-            <ActivityHistoryListItem
-              key={`activity_${key}`}
-              startDate={activity.startDate}
-              endDate={activity.endDate}
-              imageUrl1={activity.imageUrl1}
-              imageUrl2={activity.imageUrl2}
-              description={activity.description}
-            />
-          ))}
-        </ActivityHistoryList>
-      </div>
-      <div>
-        <div className="w-full pt-20 font-bold text-[2.5rem] text-primary-title text-center">
-          Dự án & hoạt động đã thực hiện
-        </div>
-        <ScrollMemberList>
-          {Object.entries(members)
-            .map(([key, member]) => [key.slice(6), member])
+            .map(([key, activity]) => [key.slice(9), activity])
             .sort((a, b) => a[0] - b[0])
-            .map(([key, member]) => (
-              <ScrollMemberListItem
-                key={`story_${key}`}
-                imageUrl={member.imageUrl}
-                name={member.name}
-                role={member.role}
+            .map(([key, activity]) => (
+              <ActivityHistoryListItem
+                key={`activity_${key}`}
+                startDate={activity.startDate}
+                endDate={activity.endDate}
+                imageUrl1={activity.imageUrl1}
+                imageUrl2={activity.imageUrl2}
+                description={activity.description}
               />
             ))}
-        </ScrollMemberList>
+        </ActivityHistoryList>
       </div>
+      <div className="mt-20"></div>
+      <ProjectLayout />
     </div>
   );
 }

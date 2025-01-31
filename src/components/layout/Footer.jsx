@@ -8,7 +8,7 @@ function Footer() {
         <div className="w-full flex">
             <div className="w-1/2 px-10">
               <div className="h-16 flex items-center">
-                <div className="h-11 bg-primary-bg rounded-full w-11 bg-cover bg-center" style={{backgroundImage: `url("${logo}")`}}></div>
+                <div className="h-11 bg-primary rounded-full w-11 bg-cover bg-center" style={{backgroundImage: `url("${logo}")`}}></div>
                 <div className="ml-4 font-bold ">
                   CANARY
                 </div>

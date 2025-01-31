@@ -14,7 +14,7 @@ import FundraisingPage from "./app/FundraisingPage.jsx";
 import { mockData, mockStory } from "./MockData/page56MockData.js";
 
 import Events from "./app/events/page.jsx";
-import Story from "./app/story/page.jsx";
+import Story from "./app/stories/page.jsx";
 
 const root = document.getElementById("root");
 createRoot(root).render(
@@ -66,7 +66,7 @@ createRoot(root).render(
         }
       />
       <Route
-        path="/story"
+        path="/stories"
         element={
           <Layout>
             <Story />
