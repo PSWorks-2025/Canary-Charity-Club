@@ -1,27 +1,41 @@
 import { useState, useEffect } from "react";
 
-const useImagePreloader = (sections) => {
+const useImagePreloader = (imageUrls) => {
   const [imagesLoaded, setImagesLoaded] = useState(false);
 
   useEffect(() => {
+    if (!imageUrls || imageUrls.length === 0) {
+      setImagesLoaded(true);
+      return;
+    }
+
+    let isMounted = true; // To prevent setting state if the component unmounts
+
     const loadImages = async () => {
-      const imagePromises = sections
-        .filter((section) => section.image?.src)
-        .map((section) => {
-          return new Promise((resolve) => {
+      try {
+        const imagePromises = imageUrls.map((src) => {
+          return new Promise((resolve, reject) => {
             const img = new Image();
-            img.src = section.image.src;
-            img.onload = resolve;
-            img.onerror = resolve; // Prevent blocking in case of errors
+            img.src = src;
+            img.onload = () => resolve(true);
+            img.onerror = () => reject(false);
           });
         });
 
-      await Promise.all(imagePromises);
-      setImagesLoaded(true);
+        await Promise.all(imagePromises);
+        if (isMounted) setImagesLoaded(true);
+      } catch (error) {
+        console.error("One or more images failed to load.");
+        if (isMounted) setImagesLoaded(false);
+      }
     };
 
     loadImages();
-  }, [sections]);
+
+    return () => {
+      isMounted = false; // Cleanup to prevent state update after unmount
+    };
+  }, [imageUrls]);
 
   return imagesLoaded;
 };

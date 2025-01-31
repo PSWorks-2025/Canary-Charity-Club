@@ -39,7 +39,6 @@ function Header() {
           </a>
         </li>
         <li>
-          <a href="/eachStory">
           <a href="/story">
             <div>Câu chuyện</div>
           </a>

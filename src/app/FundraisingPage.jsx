@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import PropTypes from "prop-types";
 import useImagePreloader from "../hooks/useImagePreloader";
 import LoadingScreen from "../components/screens/LoadingScreen";
@@ -19,12 +19,15 @@ const FundraisingPage = ({
   totalSpent,
   transactions,
 }) => {
-  console.log(imageUrl);
   const imagesLoaded = useImagePreloader([imageUrl, qrCodeUrl]);
 
   const handleSupportClick = () => {
     alert("Cảm ơn bạn đã ủng hộ! 🎉");
   };
+
+  useEffect(() => {
+    console.log(imagesLoaded);
+  }, [imagesLoaded]);
 
   if (!imagesLoaded) {
     return <LoadingScreen />;
@@ -61,31 +64,29 @@ const FundraisingPage = ({
 };
 
 FundraisingPage.propTypes = {
-  data: PropTypes.shape({
-    campaignTitle: PropTypes.string.isRequired,
-    campaignDescription: PropTypes.string.isRequired,
-    imageUrl: PropTypes.string.isRequired,
-    fundraiserName: PropTypes.string.isRequired,
-    amountRaised: PropTypes.number.isRequired,
-    goalAmount: PropTypes.number.isRequired,
-    qrCodeUrl: PropTypes.string.isRequired,
-    donors: PropTypes.arrayOf(
-      PropTypes.shape({
-        name: PropTypes.string.isRequired,
-        amount: PropTypes.number.isRequired,
-      }),
-    ).isRequired,
-    totalCollected: PropTypes.number.isRequired,
-    totalSpent: PropTypes.number.isRequired,
-    transactions: PropTypes.arrayOf(
-      PropTypes.shape({
-        id: PropTypes.number.isRequired,
-        type: PropTypes.string.isRequired,
-        amount: PropTypes.number.isRequired,
-        date: PropTypes.string.isRequired,
-      }),
-    ).isRequired,
-  }).isRequired,
+  campaignTitle: PropTypes.string.isRequired,
+  campaignDescription: PropTypes.string.isRequired,
+  imageUrl: PropTypes.string.isRequired,
+  fundraiserName: PropTypes.string.isRequired,
+  amountRaised: PropTypes.number.isRequired,
+  goalAmount: PropTypes.number.isRequired,
+  qrCodeUrl: PropTypes.string.isRequired,
+  donors: PropTypes.arrayOf(
+    PropTypes.shape({
+      name: PropTypes.string.isRequired,
+      amount: PropTypes.number.isRequired,
+    }),
+  ).isRequired,
+  totalCollected: PropTypes.number.isRequired,
+  totalSpent: PropTypes.number.isRequired,
+  transactions: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      type: PropTypes.string.isRequired,
+      amount: PropTypes.number.isRequired,
+      date: PropTypes.string.isRequired,
+    }),
+  ).isRequired,
 };
 
 export default FundraisingPage;
