@@ -3,10 +3,10 @@ import PropTypes from 'prop-types'
 import Header from './components/layout/Header.jsx'
 import Footer from './components/layout/Footer.jsx'
 
-function Layout({ children }) {
+function Layout({ children, page }) {
   return (
     <>
-      <Header />
+      <Header page={page}/>
       {children}
       <Footer />
     </>
@@ -14,7 +14,8 @@ function Layout({ children }) {
 }
 
 Layout.propTypes = {
-  children: PropTypes.array
-}
+  children: PropTypes.element,
+  page: PropTypes.string
+};
 
-export default Layout
+export default Layout;

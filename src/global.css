@@ -3,15 +3,17 @@
 
 @theme {
   --color-primary: #FFFFFF;
-  --color-primary-darken: #F4F4F4;
+  --color-primary-darken: #F5F5F5;
+  --color-primary-darken-2: #E4E4E4;
   --color-primary-hover: #ADADAD;
   --color-primary-title: #292929;
   --color-primary-paragraph: #595959;
   --color-secondary: #4160DF;
-  --color-secondary-hover: #b2c1ff;
+  --color-secondary-hover: #B2C1FF;
   --color-secondary-title: #FFFFFF;
   --color-secondary-paragraph: #FFFFFF;
   --color-tag: #F1F5FF;
+  --color-tag-2: #D2DDFC;
 }
 
 :root {

@@ -15,7 +15,7 @@ createRoot(root).render(
       <Route
         path="/"
         element={
-          <Layout>
+          <Layout page="home">
             <HomePage />
           </Layout>
         }
@@ -24,7 +24,7 @@ createRoot(root).render(
       <Route
         path="/about"
         element={
-          <Layout>
+          <Layout page="about">
             <AboutPage />
           </Layout>
         }

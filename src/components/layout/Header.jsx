@@ -1,9 +1,22 @@
-import logo from '/images/logo.png'
+import PropTypes from "prop-types";
 
-function Header() {
+import logo from "/images/logo.png";
+
+function Header({ page }) {
+  const pages = [
+    "home.Trang chủ",
+    "about.Về Canary",
+    "events.Sự kiện",
+    "stories.Câu chuyện",
+    "donate.Ủng hộ",
+  ];
+
   return (
     <div className="w-full h-20 shadow-md shadow-gray-200 bg-primary text-primary-paragraph">
-      <div className="absolute left-36 w-20 h-20 bg-cover bg-center" style={{backgroundImage: `url("${logo}")`}}></div>
+      <div
+        className="absolute left-36 w-20 h-20 bg-cover bg-center"
+        style={{ backgroundImage: `url("${logo}")` }}
+      ></div>
       <ul
         className="
         grow-1
@@ -17,38 +30,32 @@ function Header() {
         [&>li>a]:h-full
         [&>li>a]:justify-center
         [&>li>a]:items-center
-        [&>li>a]:hover:text-primary-hover
         [&>li>a]:transition
         "
       >
-        <li>
-          <a href="#">
-            <div>Trang chủ</div>
-          </a>
-        </li>
-        <li>
-          <a href="#">
-            <div>Về Canary</div>
-          </a>
-        </li>
-        <li>
-          <a href="#">
-            <div>Sự kiện</div>
-          </a>
-        </li>
-        <li>
-          <a href="#">
-            <div>Câu chuyện</div>
-          </a>
-        </li>
-        <li>
-          <a href="#">
-            <div>Ủng hộ</div>
-          </a>
-        </li>
+        {pages
+          .map((page) => page.split("."))
+          .map((pg, index) => (
+            <li key={`page_${index}`}>
+              <a
+                href={pg[0] === "home" ? "/" : `/${pg[0]}`}
+                className={
+                  page === pg[0]
+                    ? "text-secondary font-bold hover:text-secondary-hover"
+                    : "hover:text-primary-hover"
+                }
+              >
+                {pg[1]}
+              </a>
+            </li>
+          ))}
       </ul>
     </div>
   );
 }
+
+Header.propTypes = {
+  page: PropTypes.string,
+};
 
 export default Header;

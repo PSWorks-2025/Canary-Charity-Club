@@ -1,6 +1,9 @@
 import cover from "/images/cover_1.jpg";
 import wave from "/images/wave.svg";
-import { ScrollList, ScrollListItem } from "../components/list/ScrollList.jsx";
+import {
+  ScrollStoryList,
+  ScrollStoryListItem,
+} from "../components/blocks/ScrollStoryList.jsx";
 
 const stats = {
   stat_0: {
@@ -18,7 +21,7 @@ const stats = {
   stat_3: {
     title: "Số dự án đã làm",
     data: "+199",
-  }
+  },
 };
 
 const events = {
@@ -42,7 +45,7 @@ const events = {
       "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quas possimus quis nihil unde eum. Magnam harum eligendi itaque veniam. Corporis laboriosam architecto necessitatibus officiis consequatur obcaecati, reprehenderit animi perspiciatis cupiditate.",
     href: "#",
     imageUrl: cover,
-  }
+  },
 };
 
 const stories = {
@@ -73,7 +76,7 @@ const stories = {
       "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quas possimus quis nihil unde eum. Magnam harum eligendi itaque veniam.",
     href: "#",
     imageUrl: cover,
-  }
+  },
 };
 
 function HomePage() {
@@ -103,7 +106,7 @@ function HomePage() {
           ))}
       </div>
       <div className="w-full">
-        <div className="w-full pt-20 pb-4 font-bold text-[2.5rem] text-primary-title text-center">
+        <div className="w-full pt-20 font-bold text-[2.5rem] text-primary-title text-center">
           Sự kiện đang diễn ra
         </div>
         <div className="w-full">
@@ -111,14 +114,14 @@ function HomePage() {
             .map(([key, event]) => [key.slice(6), event])
             .sort((a, b) => a[0] - b[0])
             .map(([key, event]) => (
-              <div key={`event_${key}`} className="w-full py-4 flex">
-                <div className="w-1/2 px-4">
+              <div key={`event_${key}`} className="w-full h-84 mt-12 flex">
+                <div className="w-1/2 h-full px-4">
                   <div
-                    className="w-136 h-84 bg-cover bg-center float-right rounded-lg"
+                    className="w-136 h-full bg-cover bg-center float-right rounded-lg"
                     style={{ backgroundImage: `url("${event.imageUrl}")` }}
                   ></div>
                 </div>
-                <div className="w-1/2 px-4">
+                <div className="w-1/2 h-full px-4">
                   <div className="font-bold text-2xl text-primary-title">
                     {event.title}
                   </div>
@@ -139,26 +142,23 @@ function HomePage() {
         </div>
       </div>
       <div>
-        <div className="w-full pt-20 pb-8 font-bold text-[2.5rem] text-primary-title text-center">
+        <div className="w-full pt-20 font-bold text-[2.5rem] text-primary-title text-center">
           Các câu chuyện ý nghĩa
         </div>
-        <div className="w-full flex justify-center">
-          <ScrollList>
-            {Object.entries(stories)
-              .map(([key, story]) => [key.slice(6), story])
-              .sort((a, b) => a[0] - b[0])
-              .map(([key, story]) => (
-                <ScrollListItem
-                  key={`story_${key}`}
-                  href={story.href}
-                  imageUrl={story.imageUrl}
-                  title={story.title}
-                  description={story.description}
-                />
-              ))
-            }
-          </ScrollList>
-        </div>
+        <ScrollStoryList>
+          {Object.entries(stories)
+            .map(([key, story]) => [key.slice(6), story])
+            .sort((a, b) => a[0] - b[0])
+            .map(([key, story]) => (
+              <ScrollStoryListItem
+                key={`story_${key}`}
+                href={story.href}
+                imageUrl={story.imageUrl}
+                title={story.title}
+                description={story.description}
+              />
+            ))}
+        </ScrollStoryList>
       </div>
     </div>
   );
