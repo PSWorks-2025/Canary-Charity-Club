@@ -7,6 +7,8 @@ import Layout from "./layout.jsx";
 
 import HomePage from "./app/page.jsx";
 import AboutPage from "./app/about/page.jsx";
+import Events from "./app/events/page.jsx";
+import Story from "./app/story/page.jsx";
 
 const root = document.getElementById("root");
 createRoot(root).render(
@@ -26,6 +28,24 @@ createRoot(root).render(
         element={
           <Layout>
             <AboutPage />
+          </Layout>
+        }
+      />
+
+      <Route
+        path="/events"
+        element={
+          <Layout>
+            <Events />
+          </Layout>
+        }
+      />
+
+      <Route
+        path="/story"
+        element={
+          <Layout>
+            <Story />
           </Layout>
         }
       />
