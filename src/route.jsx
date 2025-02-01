@@ -1,5 +1,5 @@
 import { createRoot } from 'react-dom/client';
-import { BrowserRouter, Routes, Route, HashRouter } from 'react-router';
+import { Routes, Route, HashRouter } from 'react-router';
 
 import './global.css';
 
@@ -40,7 +40,7 @@ createRoot(root).render(
       <Route
         path="/eachStory"
         element={
-          <Layout>
+          <Layout page="stories">
             <EachStoryPage
               storyName={mockStory.storyName}
               sections={mockStory.sections}
