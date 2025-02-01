@@ -1,16 +1,16 @@
-import PropTypes from "prop-types";
+import PropTypes from 'prop-types';
 
-import logo from "/images/logo.png";
+import logo from '/images/logo.png';
 
 function Header({ page }) {
   const pages = [
-    "home.Trang chủ",
-    "about.Về Canary",
-    "events.Sự kiện",
-    "stories.Câu chuyện",
-    "donate.Ủng hộ",
+    'home.Trang chủ',
+    'about.Về Canary',
+    'events.Sự kiện',
+    'stories.Câu chuyện',
+    'donate.Ủng hộ',
   ];
-  const baseName = "/Canary-Charity-Club/"
+  const baseName = '/Canary-Charity-Club/';
   return (
     <div className="w-full h-20 shadow-md shadow-gray-200 bg-primary text-primary-paragraph">
       <div
@@ -34,15 +34,15 @@ function Header({ page }) {
         "
       >
         {pages
-          .map((page) => page.split("."))
+          .map((page) => page.split('.'))
           .map((pg, index) => (
             <li key={`page_${index}`}>
               <a
-                href={pg[0] === "home" ? `${baseName}` : `${baseName+pg[0]}`}
+                href={pg[0] === "home" ? `${baseName}#/` : `${baseName}#/${pg[0]}`}
                 className={
                   page === pg[0]
-                    ? "text-secondary font-bold hover:text-secondary-hover"
-                    : "hover:text-primary-hover"
+                    ? 'text-secondary font-bold hover:text-secondary-hover'
+                    : 'hover:text-primary-hover'
                 }
               >
                 {pg[1]}

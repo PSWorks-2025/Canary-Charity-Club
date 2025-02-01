@@ -1,24 +1,24 @@
-import { createRoot } from "react-dom/client";
-import { BrowserRouter, Routes, Route } from "react-router";
+import { createRoot } from 'react-dom/client';
+import { BrowserRouter, Routes, Route, HashRouter } from 'react-router';
 
-import "./global.css";
+import './global.css';
 
-import Layout from "./layout.jsx";
+import Layout from './layout.jsx';
 
-import HomePage from "./app/page.jsx";
-import AboutPage from "./app/about/page.jsx";
+import HomePage from './app/page.jsx';
+import AboutPage from './app/about/page.jsx';
 
-import EachStoryPage from "./app/EachStoryPage.jsx";
-import FundraisingPage from "./app/FundraisingPage.jsx";
+import EachStoryPage from './app/EachStoryPage.jsx';
+import FundraisingPage from './app/FundraisingPage.jsx';
 
-import { mockData, mockStory } from "./MockData/page56MockData.js";
+import { mockData, mockStory } from './MockData/page56MockData.js';
 
-import Events from "./app/events/page.jsx";
-import Story from "./app/stories/page.jsx";
+import Events from './app/events/page.jsx';
+import Story from './app/stories/page.jsx';
 
-const root = document.getElementById("root");
+const root = document.getElementById('root');
 createRoot(root).render(
-  <BrowserRouter basename="/Canary-Charity-Club">
+  <HashRouter>
     <Routes>
       <Route
         path="/"
@@ -52,7 +52,7 @@ createRoot(root).render(
       <Route
         path="/donate"
         element={
-          <Layout>
+          <Layout page="donate">
             <FundraisingPage {...mockData} />
           </Layout>
         }
@@ -60,7 +60,7 @@ createRoot(root).render(
       <Route
         path="/events"
         element={
-          <Layout>
+          <Layout page="events">
             <Events />
           </Layout>
         }
@@ -68,11 +68,11 @@ createRoot(root).render(
       <Route
         path="/stories"
         element={
-          <Layout>
+          <Layout page="stories">
             <Story />
           </Layout>
         }
       />
     </Routes>
-  </BrowserRouter>,
+  </HashRouter>
 );
