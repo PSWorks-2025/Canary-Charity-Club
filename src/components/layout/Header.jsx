@@ -10,7 +10,7 @@ function Header({ page }) {
     "stories.Câu chuyện",
     "donate.Ủng hộ",
   ];
-
+  const baseName = "/Canary-Charity-Club/"
   return (
     <div className="w-full h-20 shadow-md shadow-gray-200 bg-primary text-primary-paragraph">
       <div
@@ -38,7 +38,7 @@ function Header({ page }) {
           .map((pg, index) => (
             <li key={`page_${index}`}>
               <a
-                href={pg[0] === "home" ? "/" : `/${pg[0]}`}
+                href={pg[0] === "home" ? `${baseName}` : `${baseName+pg[0]}`}
                 className={
                   page === pg[0]
                     ? "text-secondary font-bold hover:text-secondary-hover"

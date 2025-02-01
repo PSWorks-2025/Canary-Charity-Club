@@ -18,7 +18,7 @@ import Story from "./app/stories/page.jsx";
 
 const root = document.getElementById("root");
 createRoot(root).render(
-  <BrowserRouter>
+  <BrowserRouter basename="/Canary-Charity-Club">
     <Routes>
       <Route
         path="/"
