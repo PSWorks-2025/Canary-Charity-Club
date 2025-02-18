@@ -1,5 +1,24 @@
 import cover from "/images/cover_1.jpg";
 import wave from "/images/wave.svg";
+import canary1 from "/images/canary1.jpg"
+import canary2 from "/images/canary2.jpg";
+import canary3 from "/images/canary3.jpg";
+import canary4 from "/images/canary4.jpg";
+import canary5 from "/images/canary5.jpg";
+import canary6 from "/images/canary6.jpg";
+import canary7 from "/images/canary7.jpg";
+import canary8 from "/images/canary8.jpg";
+import canary9 from "/images/canary9.jpg";
+import canary10 from "/images/canary10.jpg";
+import canary11 from "/images/canary11.jpg";
+import canary12 from "/images/canary12.jpg";
+import canary13 from "/images/canary13.jpg";
+import canary14 from "/images/canary14.jpg";
+import canary15 from "/images/canary15.jpg";
+import canary16 from "/images/canary16.jpg";
+import canary17 from "/images/canary17.jpg";
+import canary18 from "/images/canary18.jpg";
+import canary19 from "/images/canary19.jpg";
 import {
   ScrollStoryList,
   ScrollStoryListItem,
@@ -37,14 +56,14 @@ const events = {
     description:
       "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quas possimus quis nihil unde eum. Magnam harum eligendi itaque veniam. Corporis laboriosam architecto necessitatibus officiis consequatur obcaecati, reprehenderit animi perspiciatis cupiditate.",
     href: "#",
-    imageUrl: cover,
+    imageUrl: canary1,
   },
   event_2: {
     title: "Tên sự kiện",
     description:
       "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quas possimus quis nihil unde eum. Magnam harum eligendi itaque veniam. Corporis laboriosam architecto necessitatibus officiis consequatur obcaecati, reprehenderit animi perspiciatis cupiditate.",
     href: "#",
-    imageUrl: cover,
+    imageUrl: canary2,
   },
 };
 
@@ -54,28 +73,28 @@ const stories = {
     description:
       "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quas possimus quis nihil unde eum. Magnam harum eligendi itaque veniam.",
     href: "#",
-    imageUrl: cover,
+    imageUrl: canary3,
   },
   story_1: {
     title: "Tên câu chuyện",
     description:
       "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quas possimus quis nihil unde eum. Magnam harum eligendi itaque veniam.",
     href: "#",
-    imageUrl: cover,
+    imageUrl: canary4,
   },
   story_2: {
     title: "Tên câu chuyện",
     description:
       "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quas possimus quis nihil unde eum. Magnam harum eligendi itaque veniam.",
     href: "#",
-    imageUrl: cover,
+    imageUrl: canary5,
   },
   story_3: {
     title: "Tên câu chuyện",
     description:
       "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quas possimus quis nihil unde eum. Magnam harum eligendi itaque veniam.",
     href: "#",
-    imageUrl: cover,
+    imageUrl: canary6,
   },
 };
 
@@ -89,20 +108,20 @@ function HomePage() {
           height: "calc(100vh - 5rem)",
         }}
       ></div>
-      <div className="w-full h-64 -mt-20 flex justify-center">
+      <div className="w-full h-full md:h-64 md:-mt-20 flex flex-col md:flex-row justify-center items-center">
         {Object.entries(stats)
           .map(([key, stat]) => [key.slice(5), stat])
           .sort((a, b) => a[0] - b[0])
           .map(([key, stat]) => (
             <div
               key={`stat_${key}`}
-              className="w-64 h-full bg-tag mx-4 rounded-3xl shadow-lg bg-contain bg-bottom bg-no-repeat"
+              className="w-64 h-full md:mt-0 mt-10 bg-tag mx-4 rounded-3xl shadow-lg bg-contain bg-bottom bg-no-repeat"
               style={{ backgroundImage: `url("${wave}")` }}
             >
-              <div className="w-full font-medium text-xl py-10 text-center">
+              <div className="w-full font-medium text-sm md:text-xl py-3 md:py-10 text-center">
                 {stat.title}
               </div>
-              <div className="w-full font-bold text-6xl text-secondary text-center">
+              <div className="w-full font-bold text-2xl md:text-6xl text-secondary text-center">
                 {stat.data}
               </div>
             </div>

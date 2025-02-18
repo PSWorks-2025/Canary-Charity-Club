@@ -12,6 +12,25 @@ import {
   ActivityHistoryListItem,
 } from "../../components/Lists/ActivityHistoryList.jsx";
 import ProjectLayout from "../../components/ProjectLayout/ProjectLayout";
+import canary1 from "/images/canary1.jpg"
+import canary2 from "/images/canary2.jpg";
+import canary3 from "/images/canary3.jpg";
+import canary4 from "/images/canary4.jpg";
+import canary5 from "/images/canary5.jpg";
+import canary6 from "/images/canary6.jpg";
+import canary7 from "/images/canary7.jpg";
+import canary8 from "/images/canary8.jpg";
+import canary9 from "/images/canary9.jpg";
+import canary10 from "/images/canary10.jpg";
+import canary11 from "/images/canary11.jpg";
+import canary12 from "/images/canary12.jpg";
+import canary13 from "/images/canary13.jpg";
+import canary14 from "/images/canary14.jpg";
+import canary15 from "/images/canary15.jpg";
+import canary16 from "/images/canary16.jpg";
+import canary17 from "/images/canary17.jpg";
+import canary18 from "/images/canary18.jpg";
+import canary19 from "/images/canary19.jpg";
 
 const stories = {
   story_0: {
@@ -26,21 +45,21 @@ const stories = {
     description:
       "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quas possimus quis nihil unde eum. Magnam harum eligendi itaque veniam.",
     href: "#",
-    imageUrl: cover,
+    imageUrl: canary7,
   },
   story_2: {
     title: "Tên câu chuyện",
     description:
       "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quas possimus quis nihil unde eum. Magnam harum eligendi itaque veniam.",
     href: "#",
-    imageUrl: cover,
+    imageUrl: canary8,
   },
   story_3: {
     title: "Tên câu chuyện",
     description:
       "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quas possimus quis nihil unde eum. Magnam harum eligendi itaque veniam.",
     href: "#",
-    imageUrl: cover,
+    imageUrl: canary9,
   },
 };
 
@@ -88,24 +107,24 @@ const activityHistory = {
     endDate: "8/2018",
     description:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia, saepe eveniet atque veniam quas voluptates aliquam iure, accusamus aliquid autem, commodi soluta vitae cumque exercitationem voluptatum. Adipisci necessitatibus accusantium eum.",
-    imageUrl1: cover,
-    imageUrl2: cover,
+    imageUrl1: canary1,
+    imageUrl2: canary2,
   },
   activity_1: {
     startDate: "6/2017",
     endDate: "8/2018",
     description:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia, saepe eveniet atque veniam quas voluptates aliquam iure, accusamus aliquid autem, commodi soluta vitae cumque exercitationem voluptatum. Adipisci necessitatibus accusantium eum.",
-    imageUrl1: cover,
-    imageUrl2: cover,
+    imageUrl1: canary3,
+    imageUrl2: canary4,
   },
   activity_2: {
     startDate: "6/2017",
     endDate: "8/2018",
     description:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia, saepe eveniet atque veniam quas voluptates aliquam iure, accusamus aliquid autem, commodi soluta vitae cumque exercitationem voluptatum. Adipisci necessitatibus accusantium eum.",
-    imageUrl1: cover,
-    imageUrl2: cover,
+    imageUrl1: canary5,
+    imageUrl2: canary6,
   },
 };
 
@@ -135,7 +154,7 @@ function Aboutpage() {
         <div className="w-1/2 px-4">
           <div
             className="w-162 h-102 -mr-26 bg-cover bg-center float-right rounded-lg"
-            style={{ backgroundImage: `url("${cover}")` }}
+            style={{ backgroundImage: `url("${canary10}")` }}
           ></div>
         </div>
         <div className="w-1/2 px-4 flex items-center">
@@ -156,7 +175,7 @@ function Aboutpage() {
         <div className="w-1/2 px-4">
           <div
             className="w-162 h-102 -ml-26 bg-cover bg-center rounded-lg"
-            style={{ backgroundImage: `url("${cover}")` }}
+            style={{ backgroundImage: `url("${canary9}")` }}
           ></div>
         </div>
         <div className="w-1/2 px-4 flex items-center justify-end">

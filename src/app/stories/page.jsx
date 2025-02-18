@@ -1,10 +1,15 @@
 import React from "react";
 import "./styles.css";
-
+import canary7 from "/images/canary7.jpg";
+import canary9 from "/images/canary9.jpg";
 function Story() {
   return (
     <>
-      <div className="hero_section">
+      <div style={{ backgroundImage: `linear-gradient(
+            to bottom,
+            transparent 70%,
+            rgba(0, 0, 0, 0.6)
+          ), url(${canary7})` }} className="hero_section">
         <h1>Tên câu chuyện</h1>
         <p>
           Lorem ipsum dolor sit amet consectetur. Mi eget scelerisque interdum
@@ -28,10 +33,8 @@ function Story() {
           <div className="flex flex-col items-center">
             <div className="w-auto h-auto overflow-hidden rounded-lg mb-4">
               <img
-                src={
-                  "https://s3-alpha-sig.figma.com/img/a07a/b75a/2ce8bfdba6a86b343a6621bb686a5412?Expires=1739145600&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=cGIrWAD3KuhNPvt-GnL6g92XgRqAJKyk3KcRRF7CJ7QT6YWUWAt~EdsgLuhVxsw12Fu8AOsO6twwzb4-Vwn5n~7oObRp~bJQWyx3W--fWRtcBCcQfzekwMcyS7WXH3vx8vK6kSG4ILlTfp9xtq8w82OSarREJibwk7~HTf1YiUF9KaBy~BHaEmsFLDsPlSEYKt4DuGDYcfDSsnA3wmCzGhPMKNFs25WKJ-rASQj3yS51VgSiHGqBqr80d4k1KM9vFU961eDFD~PwDPzaDE9TDsWH5BJ4aMcbXtSDQGGmZHQrW2JcGQ6Wdr2jSnM7LAlC5AbYDqEjeUd~eIwtAfbIcw__"
-                }
-                alt="Câu chuyện"
+                src={canary9}
+                alt="Story"
                 className="w-full h-full object-cover"
               />
             </div>
