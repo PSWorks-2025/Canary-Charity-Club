@@ -4,7 +4,7 @@ import { MdCircle } from "react-icons/md";
 import { useState } from "react";
 import PropTypes from "prop-types";
 
-export function ScrollStoryListItem({ imageUrl, title, description, href }) {
+export function ScrollListItem({ imageUrl, title, description, href }) {
   const navigate = useNavigate();
 
   return (
@@ -25,15 +25,15 @@ export function ScrollStoryListItem({ imageUrl, title, description, href }) {
   );
 }
 
-ScrollStoryListItem.propTypes = {
+ScrollListItem.propTypes = {
   imageUrl: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
   href: PropTypes.string,
 };
 
-export function ScrollStoryList({ children }) {
-  const numberOfPages = Math.ceil(children.length / 3);
+export function ScrollList({ children }) {
+  const numberOfPages = children ? Math.ceil(children.length / 3) : 0;
 
   const [page, setPage] = useState(0);
 
@@ -75,6 +75,6 @@ export function ScrollStoryList({ children }) {
   );
 }
 
-ScrollStoryList.propTypes = {
+ScrollList.propTypes = {
   children: PropTypes.array,
 };

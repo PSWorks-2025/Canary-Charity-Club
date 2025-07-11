@@ -1,5 +1,6 @@
-import { useEffect } from "react";
+import { useEffect, useContext } from "react";
 import PropTypes from "prop-types";
+import GlobalContext from "../../contexts/global";
 import useDocData from "../../hooks/useDocData";
 import useImagePreloader from "../../hooks/useImagePreloader";
 import LoadingScreen from "../../components/screens/LoadingScreen";
@@ -10,7 +11,7 @@ import TransactionsTable from "../../components/TransactionsTable";
 const DonatePage = ({
   campaignTitle,
   campaignDescription,
-  imageUrl,
+  imageUrl = "https://i.ibb.co/kVQhWyjz/logo.png",
   fundraiserName,
   amountRaised,
   goalAmount,
@@ -20,7 +21,11 @@ const DonatePage = ({
   totalSpent,
   transactions,
 }) => {
-  const mainPageComponentsData = useDocData("Main pages", "components");
+  const { setCurrentPage } = useContext(GlobalContext);
+
+  useEffect(() => setCurrentPage("donate"), [setCurrentPage]);
+
+  // const mainPageComponentsData = useDocData("Main pages", "components ");
 
   const imagesLoaded = useImagePreloader([imageUrl, qrCodeUrl]);
 
@@ -78,7 +83,7 @@ DonatePage.propTypes = {
     PropTypes.shape({
       name: PropTypes.string.isRequired,
       amount: PropTypes.number.isRequired,
-    }),
+    })
   ).isRequired,
   totalCollected: PropTypes.number.isRequired,
   totalSpent: PropTypes.number.isRequired,
@@ -88,7 +93,7 @@ DonatePage.propTypes = {
       type: PropTypes.string.isRequired,
       amount: PropTypes.number.isRequired,
       date: PropTypes.string.isRequired,
-    }),
+    })
   ).isRequired,
 };
 
