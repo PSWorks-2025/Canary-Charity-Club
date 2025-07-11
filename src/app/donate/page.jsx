@@ -25,7 +25,7 @@ const DonatePage = ({
 
   useEffect(() => setCurrentPage("donate"), [setCurrentPage]);
 
-  // const mainPageComponentsData = useDocData("Main pages", "components ");
+  const mainPageComponentsData = useDocData("Main pages", "components ");
 
   const imagesLoaded = useImagePreloader([imageUrl, qrCodeUrl]);
 
