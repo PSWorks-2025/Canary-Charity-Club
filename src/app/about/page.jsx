@@ -1,3 +1,6 @@
+import { useContext, useEffect } from "react";
+import GlobalContext from "../../contexts/global";
+import useDocData from "../../hooks/useDocData";
 import cover from "/images/cover_2.jpg";
 import {
   ScrollStoryList,
@@ -11,7 +14,7 @@ import {
   ActivityHistoryList,
   ActivityHistoryListItem,
 } from "../../components/Lists/ActivityHistoryList.jsx";
-import ProjectLayout from "../../components/ProjectLayout/ProjectLayout";
+import ProjectLayout from "../../components/ProjectLayout/ProjectLayout.jsx";
 import canary1 from "/images/canary1.jpg"
 import canary2 from "/images/canary2.jpg";
 import canary3 from "/images/canary3.jpg";
@@ -22,15 +25,15 @@ import canary7 from "/images/canary7.jpg";
 import canary8 from "/images/canary8.jpg";
 import canary9 from "/images/canary9.jpg";
 import canary10 from "/images/canary10.jpg";
-import canary11 from "/images/canary11.jpg";
-import canary12 from "/images/canary12.jpg";
-import canary13 from "/images/canary13.jpg";
-import canary14 from "/images/canary14.jpg";
-import canary15 from "/images/canary15.jpg";
-import canary16 from "/images/canary16.jpg";
-import canary17 from "/images/canary17.jpg";
-import canary18 from "/images/canary18.jpg";
-import canary19 from "/images/canary19.jpg";
+// import canary11 from "/images/canary11.jpg";
+// import canary12 from "/images/canary12.jpg";
+// import canary13 from "/images/canary13.jpg";
+// import canary14 from "/images/canary14.jpg";
+// import canary15 from "/images/canary15.jpg";
+// import canary16 from "/images/canary16.jpg";
+// import canary17 from "/images/canary17.jpg";
+// import canary18 from "/images/canary18.jpg";
+// import canary19 from "/images/canary19.jpg";
 
 const stories = {
   story_0: {
@@ -129,6 +132,12 @@ const activityHistory = {
 };
 
 function Aboutpage() {
+  const { setCurrentPage } = useContext(GlobalContext);
+
+  useEffect(() => setCurrentPage("about"), [setCurrentPage]);
+
+  const mainPageComponentsData = useDocData("Main pages", "components");
+
   return (
     <div className="w-full">
       <div

@@ -3,10 +3,10 @@ import PropTypes from "prop-types";
 import Header from "./components/layout/Header.jsx";
 import Footer from "./components/layout/Footer.jsx";
 
-function Layout({ children, page }) {
+function Layout({ children }) {
   return (
     <>
-      <Header page={page}/>
+      <Header />
       {children}
       <Footer />
     </>

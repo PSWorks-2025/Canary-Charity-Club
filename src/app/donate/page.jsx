@@ -1,12 +1,13 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import PropTypes from "prop-types";
-import useImagePreloader from "../hooks/useImagePreloader";
-import LoadingScreen from "../components/screens/LoadingScreen";
-import FundraisingHeader from "../components/FundraisingHeader";
-import DonorList from "../components/DonorList";
-import TransactionsTable from "../components/TransactionsTable";
+import useDocData from "../../hooks/useDocData";
+import useImagePreloader from "../../hooks/useImagePreloader";
+import LoadingScreen from "../../components/screens/LoadingScreen";
+import FundraisingHeader from "../../components/FundraisingHeader";
+import DonorList from "../../components/DonorList";
+import TransactionsTable from "../../components/TransactionsTable";
 
-const FundraisingPage = ({
+const DonatePage = ({
   campaignTitle,
   campaignDescription,
   imageUrl,
@@ -19,6 +20,8 @@ const FundraisingPage = ({
   totalSpent,
   transactions,
 }) => {
+  const mainPageComponentsData = useDocData("Main pages", "components");
+
   const imagesLoaded = useImagePreloader([imageUrl, qrCodeUrl]);
 
   const handleSupportClick = () => {
@@ -63,7 +66,7 @@ const FundraisingPage = ({
   );
 };
 
-FundraisingPage.propTypes = {
+DonatePage.propTypes = {
   campaignTitle: PropTypes.string.isRequired,
   campaignDescription: PropTypes.string.isRequired,
   imageUrl: PropTypes.string.isRequired,
@@ -89,4 +92,4 @@ FundraisingPage.propTypes = {
   ).isRequired,
 };
 
-export default FundraisingPage;
+export default DonatePage;

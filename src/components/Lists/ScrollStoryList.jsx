@@ -1,9 +1,12 @@
+import { useNavigate } from "react-router";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import { MdCircle } from "react-icons/md";
 import { useState } from "react";
 import PropTypes from "prop-types";
 
 export function ScrollStoryListItem({ imageUrl, title, description, href }) {
+  const navigate = useNavigate();
+
   return (
     <div className="w-88 mr-8 h-full">
       <div
@@ -14,10 +17,10 @@ export function ScrollStoryListItem({ imageUrl, title, description, href }) {
       <p className="w-full text-base/5 py-5 text-primary-paragraph">
         {description}
       </p>
-      <a href={href} className="text-secondary font-semibold">
+      <button onClick={() => navigate(href)} className="text-secondary font-semibold transition-all duration-200 hover:text-secondary-hover hover:translate-x-1">
         Đọc thêm
         <IoIosArrowForward className="inline-block mb-0.5" />
-      </a>
+      </button>
     </div>
   );
 }
@@ -39,13 +42,13 @@ export function ScrollStoryList({ children }) {
       <div className="w-280 h-112 relative">
         <button
           onClick={() => setPage(Math.max(page - 1, 0))}
-          className="w-11 h-11 absolute -left-6 top-54 rounded-full bg-primary-darken flex justify-center items-center cursor-pointer"
+          className="hover:scale-105 hover:bg-primary-darken-2 transition-all duration-200 w-11 h-11 absolute -left-6 top-54 rounded-full bg-primary-darken flex justify-center items-center cursor-pointer"
         >
           <IoIosArrowBack className="w-5 h-5" />
         </button>
         <button
           onClick={() => setPage(Math.min(page + 1, numberOfPages - 1))}
-          className="w-11 h-11 absolute -right-6 top-54 rounded-full bg-primary-darken flex justify-center items-center cursor-pointer"
+          className="hover:scale-105 hover:bg-primary-darken-2 transition-all duration-200 w-11 h-11 absolute -right-6 top-54 rounded-full bg-primary-darken flex justify-center items-center cursor-pointer"
         >
           <IoIosArrowForward className="w-5 h-5" />
         </button>
@@ -61,8 +64,8 @@ export function ScrollStoryList({ children }) {
           {Array.from(Array(numberOfPages).keys()).map((index) => (
             <MdCircle
               key={`dot_${index}`}
-              className={`w-2.5 h-2.5 mx-0.5
-                ${page === index ? "text-secondary" : "text-primary-darken-2"}
+              className={`w-2.5 h-2.5 mx-0.5 transition-all duration-200 cursor-pointer 
+                ${page === index ? "text-secondary scale-115" : "text-primary-darken-2"}
               `}
             />
           ))}

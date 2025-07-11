@@ -1,8 +1,16 @@
-import React from "react";
+import { useContext, useEffect } from "react";
+import useDocData from "../../hooks/useDocData";
+import GlobalContext from "../../contexts/global";
 import "./styles.css";
 import canary7 from "/images/canary7.jpg";
 import canary9 from "/images/canary9.jpg";
-function Story() {
+function StoriesPage() {
+  const { setCurrentPage } = useContext(GlobalContext);
+
+  useEffect(() => setCurrentPage("stories"), [setCurrentPage]);
+
+  const mainPageComponentsData = useDocData("Main pages", "components");
+
   return (
     <>
       <div style={{ backgroundImage: `linear-gradient(
@@ -90,4 +98,4 @@ function Story() {
   );
 }
 
-export default Story;
+export default StoriesPage;

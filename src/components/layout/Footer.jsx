@@ -1,6 +1,9 @@
+import useDocData from '../../hooks/useDocData';
 import logo from '/images/logo.png';
 
 function Footer() {
+  const globalComponentsData = useDocData('Global', 'components');
+
   return (
     <>
       <div className="w-full px-30 py-8 bg-secondary text-secondary-paragraph mt-16">
@@ -9,7 +12,7 @@ function Footer() {
             <div className="h-16 flex items-center">
               <div
                 className="h-11 bg-primary rounded-full w-11 bg-cover bg-center"
-                style={{ backgroundImage: `url("${logo}")` }}
+                style={{ backgroundImage: `url("${globalComponentsData?.logo || logo}")` }}
               ></div>
               <div className="ml-4 font-bold ">CANARY</div>
             </div>
@@ -18,18 +21,17 @@ function Footer() {
               tin cậy và minh bạch.
             </p>
             <br />
-            <p>Hotline: 0333.456.789</p>
-            <p>Email: kenlee@gmail.com</p>
+            <p>Hotline: {globalComponentsData?.hotline || '+84 000 000 001'}</p>
+            <p>Email: {globalComponentsData?.email || 'kenlee@gmail.com'}</p>
             <p>
-              Địa chỉ: lô A2 Trần Đăng Ninh, P.Hòa Cường Bắc, Q.Hải Châu, Đà
-              Nẵng
+              Địa chỉ: {globalComponentsData?.address || 'Số 1, Đường ABC, Quận XYZ, TP. Hồ Chí Minh'}
             </p>
           </div>
-          <div className="w-1/2 px-10 [&>a]:block [&>a]:hover:text-secondary-hover [&>a]:transition">
+          <div className="w-1/2 px-10 [&>a]:block [&>a]:hover:text-secondary-hover [&>a]:hover:translate-x-1 [&>a]:transition">
             <div className="h-16 flex items-center font-bold">Truyền thông</div>
-            <a href="https://www.facebook.com">Facebook</a>
-            <a href="https://www.youtube.com">Youtube</a>
-            <a href="https://www.tiktok.com">Tiktok</a>
+            <a href={globalComponentsData?.social_media?.facebook || '/'}>Facebook</a>
+            <a href={globalComponentsData?.social_media?.youtube || '/'}>Youtube</a>
+            <a href={globalComponentsData?.social_media?.tiktok || '/'}>Tiktok</a>
           </div>
         </div>
       </div>
