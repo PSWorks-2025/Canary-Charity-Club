@@ -6,7 +6,7 @@ import useImagePreloader from "../../hooks/useImagePreloader";
 import LoadingScreen from "../../components/core/screens/LoadingScreen";
 import FundraisingHeroSection from "../../components/pageSections/FundraisingHeroSection";
 import DonorList from "../../components/core/lists/DonorList";
-import loading from "./images/loading.gif";
+import loading from "/images/Insider-loading.gif";
 
 
 const DonatePage = ({
@@ -28,30 +28,30 @@ const DonatePage = ({
 
   const mainPageComponentsData = useDocData("Main pages", "components ");
 
-  const heroImage = useImagePreloader([imageUrl, qrCodeUrl]);
-  const imagesLoaded = useImagePreloader([imageUrl, qrCodeUrl]);
+  const heroImage = useImagePreloader([mainPageComponentsData?.hero_sections?.donate?.image || ""]);
+  const qrCode = useImagePreloader([mainPageComponentsData?.hero_sections?.donate?.qrcode || ""]);
 
   const handleSupportClick = () => {
     alert("Cảm ơn bạn đã ủng hộ! 🎉");
   };
 
-  useEffect(() => {
-    console.log(imagesLoaded);
-  }, [imagesLoaded]);
+  // useEffect(() => {
+  //   console.log(imagesLoaded);
+  // }, [imagesLoaded]);
 
-  if (!imagesLoaded) {
-    return <LoadingScreen />;
-  }
+  // if (!imagesLoaded) {
+  //   return <LoadingScreen />;
+  // }
 
   return (
     <div className="bg-[#fafafa] min-h-screen relative overflow-hidden p-6">
       {/* Header with Background Image and Progress */}
       <FundraisingHeroSection
-        imageUrl={mainPageComponentsData?.hero_sections?.donate?.image || ""}
+        imageUrl={heroImage ? mainPageComponentsData?.hero_sections?.donate?.image || "" : loading}
         fundraiserName={fundraiserName}
         amountRaised={amountRaised}
         goalAmount={goalAmount}
-        qrCodeUrl={qrCodeUrl}
+        qrCodeUrl={qrCode ? mainPageComponentsData?.hero_sections?.donate?.qrcode || "" : loading}
         onSupportClick={handleSupportClick}
       />
 

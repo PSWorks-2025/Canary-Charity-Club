@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 import { useState, useContext } from "react";
 import GlobalContext from "../../contexts/global";
-import logo from "/images/logo.png";
+// import logo from "/images/logo.png";
 import { useNavigate } from "react-router-dom";
 import useDocData from "../../hooks/useDocData";
 function Header() {
@@ -28,7 +28,7 @@ function Header() {
     <div className="w-full h-20 shadow-md shadow-gray-200 bg-primary text-primary-paragraph">
       <div
         className="absolute left-5 sm:left-10 md:left-20 lg:left-36 w-20 h-20 bg-cover bg-center"
-        style={{ backgroundImage: `url("${globalComponentsData?.logo || logo}")` }}
+        style={{ backgroundImage: `url("${globalComponentsData?.logo || ""}")` }}
       ></div>
       <div className="flex justify-between items-center text-center h-full px-4">
         <div className="hidden md:block h-full flex-grow">
