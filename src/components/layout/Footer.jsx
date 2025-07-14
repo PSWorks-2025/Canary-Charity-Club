@@ -1,5 +1,5 @@
 import useDocData from '../../hooks/useDocData';
-import logo from '/images/logo.png';
+// import logo from '/images/logo.png';
 
 function Footer() {
   const globalComponentsData = useDocData('Global', 'components');
@@ -12,7 +12,7 @@ function Footer() {
             <div className="h-16 flex items-center">
               <div
                 className="h-11 bg-primary rounded-full w-11 bg-cover bg-center"
-                style={{ backgroundImage: `url("${globalComponentsData?.logo || logo}")` }}
+                style={{ backgroundImage: `url("${globalComponentsData?.logo || ""}")` }}
               ></div>
               <div className="ml-4 font-bold ">CANARY</div>
             </div>
