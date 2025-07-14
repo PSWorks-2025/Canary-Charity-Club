@@ -1,10 +1,9 @@
-import { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 
 import useImagePreloader from "../../../hooks/useImagePreloader";
 
-import SupportButton from "../../../components/SupportButton";
-import StorySection from "../../../components/StorySection";
+import SupportButton from "../../../components/core/buttons/SupportButton";
+import StorySection from "../../../components/pageSections/StorySection";
 import LoadingScreen from "../../../components/screens/LoadingScreen";
 
 const EachStoryPage = ({ storyName, sections }) => {

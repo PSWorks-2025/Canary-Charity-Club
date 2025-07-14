@@ -1,7 +1,7 @@
 import {
   MemberList,
   MemberListItem,
-} from "../Lists/MemberList";
+} from "../core/lists/MemberList";
 
 import PropTypes from "prop-types";
 

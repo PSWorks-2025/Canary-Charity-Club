@@ -1,7 +1,7 @@
 import { useContext, useEffect } from "react";
 import GlobalContext from "../../contexts/global";
 import useDocData from "../../hooks/useDocData";
-import DonateOverview from "../../components/DonateOverview/DonateOverview";
+import DonateOverview from "../../components/overview/DonateOverview";
 // import ProjectOverview from "../../components/projectOverview/ProjectOverview";
 // import EventsOverview from "../../components/EventsOverview/EventsOverview";
 import "./styles.css";

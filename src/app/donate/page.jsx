@@ -3,10 +3,11 @@ import PropTypes from "prop-types";
 import GlobalContext from "../../contexts/global";
 import useDocData from "../../hooks/useDocData";
 import useImagePreloader from "../../hooks/useImagePreloader";
-import LoadingScreen from "../../components/screens/LoadingScreen";
-import FundraisingHeader from "../../components/FundraisingHeader";
-import DonorList from "../../components/DonorList";
-import TransactionsTable from "../../components/TransactionsTable";
+import LoadingScreen from "../../components/core/screens/LoadingScreen";
+import FundraisingHeroSection from "../../components/pageSections/FundraisingHeroSection";
+import DonorList from "../../components/core/lists/DonorList";
+import loading from "./images/loading.gif";
+
 
 const DonatePage = ({
   campaignTitle,
@@ -27,6 +28,7 @@ const DonatePage = ({
 
   const mainPageComponentsData = useDocData("Main pages", "components ");
 
+  const heroImage = useImagePreloader([imageUrl, qrCodeUrl]);
   const imagesLoaded = useImagePreloader([imageUrl, qrCodeUrl]);
 
   const handleSupportClick = () => {
@@ -44,8 +46,8 @@ const DonatePage = ({
   return (
     <div className="bg-[#fafafa] min-h-screen relative overflow-hidden p-6">
       {/* Header with Background Image and Progress */}
-      <FundraisingHeader
-        imageUrl={imageUrl}
+      <FundraisingHeroSection
+        imageUrl={mainPageComponentsData?.hero_sections?.donate?.image || ""}
         fundraiserName={fundraiserName}
         amountRaised={amountRaised}
         goalAmount={goalAmount}
@@ -62,11 +64,11 @@ const DonatePage = ({
       <DonorList donors={donors} />
 
       {/* Transactions Table */}
-      <TransactionsTable
+      {/* <TransactionsTable
         totalCollected={totalCollected}
         totalSpent={totalSpent}
         transactions={transactions}
-      />
+      /> */}
     </div>
   );
 };

@@ -1,11 +1,11 @@
-.hero_section {
+/* .hero_section { */
   /* background-image: linear-gradient(
       to bottom,
       transparent 70%,
       rgba(0, 0, 0, 0.6)
     ),
     url(https://organizations.home.blog/wp-content/uploads/2019/03/5.jp); */
-  background-repeat: no-repeat;
+  /* background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
   color: white;
@@ -49,4 +49,4 @@
     padding: 0.5rem;
     background-position: top;
   }
-}
+} */

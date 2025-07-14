@@ -1,7 +1,7 @@
 import {
   ActivityHistoryList,
   ActivityHistoryListItem,
-} from "../Lists/ActivityHistoryList";
+} from "../core/lists/ActivityHistoryList";
 
 import PropTypes from "prop-types";
 

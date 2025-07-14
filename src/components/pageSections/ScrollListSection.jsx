@@ -1,7 +1,7 @@
 import {
   ScrollList,
   ScrollListItem,
-} from "../Lists/ScrollList";
+} from "../core/lists/ScrollList";
 
 import PropTypes from "prop-types";
 

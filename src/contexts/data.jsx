@@ -5,15 +5,15 @@ const DataContext = createContext({});
 
 export const DataContextProvider = ({ children }) => {
   const [data, setData] = useState({});
-  const [hasStartedLoading, setStartedLoading] = useState({});
+  // const [hasStartedLoading, setStartedLoading] = useState({});
 
   return (
     <DataContext.Provider
       value={{
         data,
         setData,
-        hasStartedLoading,
-        setStartedLoading,
+        // hasStartedLoading,
+        // setStartedLoading,
       }}
     >
       {children}

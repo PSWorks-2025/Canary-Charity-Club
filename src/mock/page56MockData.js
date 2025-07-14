@@ -2,7 +2,7 @@ export const mockData = {
   campaignTitle: "Ủng hộ Trường Học Vùng Cao",
   campaignDescription:
     "Chúng tôi đang gây quỹ để xây dựng trường học cho trẻ em vùng cao.",
-  imageUrl: "https://picsum.photos/800/400",
+  // imageUrl: "https://picsum.photos/800/400",
   fundraiserName: "Quỹ Vì Tương Lai",
   amountRaised: 71530300,
   goalAmount: 100000000,

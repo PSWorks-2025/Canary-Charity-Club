@@ -13,11 +13,11 @@ function Header() {
 
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const pages = {
-    home:   "Trang chủ",
-    about:  "Về Canary",
-    events: "Sự kiện",
-    stories:"Câu chuyện",
-    donate: "Ủng hộ",
+    home:   "Home",
+    about:  "About",
+    events: "Events",
+    stories:"Stories",
+    donate: "Donate us",
   };
 
   const toggleDropdown = () => {
@@ -34,8 +34,8 @@ function Header() {
         <div className="hidden md:block h-full flex-grow">
           <ul className="flex justify-center h-full">
             {Object.entries(pages)
-              .map(([pageId, pageName]) => (
-                <li key={`page_${pageId}`} className="w-28 h-full">
+              .map(([pageId, pageName], index) => (
+                <li key={`page_${pageId}`} className="w-28 h-full flex flex-row">
                   <button
                     type="button"
                     onClick={() => navigate(`${basePath}/${pageId}`)}
@@ -49,6 +49,9 @@ function Header() {
                   >
                     {pageName}
                   </button>
+                  { index < Object.entries(pages).length - 1 && (
+                    <vr className="border-gray-200 border-1 h-1/2 my-auto" />
+                  )}
                 </li>
               ))}
           </ul>
@@ -66,7 +69,7 @@ function Header() {
         <div className="block md:hidden absolute left-0 right-0 bg-primary">
           <ul className="flex flex-col items-center">
             {Object.entries(pages)
-              .map(([pageId, pageName]) => (
+              .map(([pageId, pageName], index) => (
                 <li
                   key={`dropdown_page_${pageId}`}
                   className="w-full text-center"
@@ -74,7 +77,7 @@ function Header() {
                   <button
                     type="button"
                     onClick={() => navigate(`${basePath}/${pageId}`)}
-                    className={` w-full h-full transition-colors duration-200 cursor-pointer 
+                    className={` w-full h-full py-3 transition-colors duration-200 cursor-pointer 
                       ${
                         currentPage === pageId
                           ? "text-secondary font-bold hover:text-primary hover:bg-secondary"
@@ -84,6 +87,9 @@ function Header() {
                   >
                     {pageName}
                   </button>
+                  { index < Object.entries(pages).length - 1 && (
+                    <hr className="border-gray-300 w-2/3 mx-auto" />
+                  )}
                 </li>
               ))}
           </ul>
