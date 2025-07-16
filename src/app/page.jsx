@@ -11,7 +11,7 @@ function HomePage() {
 
   useEffect(() => setCurrentPage("home"), [setCurrentPage]);
 
-  const mainPageComponentsData = useDocData("Main pages", "components ");
+  const mainPageComponentsData = useDocData("Main pages", "components");
 
   return (
     <div className="w-full">
