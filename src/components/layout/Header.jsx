@@ -4,12 +4,16 @@ import GlobalContext from "../../contexts/global";
 // import logo from "/images/logo.png";
 import { useNavigate } from "react-router-dom";
 import useDocData from "../../hooks/useDocData";
+import { useLocation } from "react-router-dom";
+
 function Header() {
   const navigate = useNavigate();
+  const location = useLocation();
+  const currentPage = location.pathname.replace("/", "");
 
   const globalComponentsData = useDocData('Global', 'components');
 
-  const { currentPage, basePath } = useContext(GlobalContext);
+  // const { currentPage, basePath } = useContext(GlobalContext);
 
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const pages = {
@@ -38,7 +42,7 @@ function Header() {
                 <li key={`page_${pageId}`} className="w-28 h-full flex flex-row">
                   <button
                     type="button"
-                    onClick={() => navigate(`${basePath}/${pageId}`)}
+                    onClick={() => navigate( pageId=== "home" ? '/' : `/${pageId}`)}
                     className={` w-full h-full transition-colors duration-200 cursor-pointer 
                       ${
                         currentPage === pageId
@@ -50,7 +54,7 @@ function Header() {
                     {pageName}
                   </button>
                   { index < Object.entries(pages).length - 1 && (
-                    <vr className="border-gray-200 border-1 h-1/2 my-auto" />
+                    <br className="border-gray-200 border-1 h-1/2 my-auto" />
                   )}
                 </li>
               ))}

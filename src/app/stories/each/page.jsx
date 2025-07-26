@@ -1,8 +1,8 @@
 import PropTypes from "prop-types";
+import { motion } from "framer-motion";
 
 import useImagePreloader from "../../../hooks/useImagePreloader";
 
-import SupportButton from "../../../components/core/buttons/SupportButton";
 import StorySection from "../../../components/pageSections/StorySection";
 import LoadingScreen from "../../../components/screens/LoadingScreen";
 
@@ -22,7 +22,14 @@ const EachStoryPage = ({ storyName, sections }) => {
       {sections.map((section, index) => (
         <StorySection key={index} section={section} />
       ))}
-      <SupportButton onClick={() => console.log("support clicked")} />
+    <motion.button
+      className="bg-blue-600 text-white px-6 py-2 rounded-full shadow-md hover:bg-blue-700 transition"
+      whileHover={{ scale: 1.05 }}
+      whileTap={{ scale: 0.95 }}
+      onClick={() => console.log("support clicked") }
+    >
+      Ủng hộ
+    </motion.button>
     </div>
   );
 };

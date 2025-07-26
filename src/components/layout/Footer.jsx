@@ -22,7 +22,7 @@ function Footer() {
             </p>
             <br />
             <p>Hotline: {globalComponentsData?.hotline || '+84 000 000 001'}</p>
-            <p>Email: {globalComponentsData?.email || 'kenlee@gmail.com'}</p>
+            <p>Email: {globalComponentsData?.email || 'nguyentrungtttl@gmail.com'}</p>
             <p>
               Địa chỉ: {globalComponentsData?.address || 'Số 1, Đường ABC, Quận XYZ, TP. Hồ Chí Minh'}
             </p>

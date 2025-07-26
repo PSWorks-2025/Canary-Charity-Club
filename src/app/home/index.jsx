@@ -1,10 +1,10 @@
 import { useContext, useEffect } from "react";
-import GlobalContext from "../contexts/global";
-import useDocData from "../hooks/useDocData";
-import HeroSection from "../components/pageSections/HeroSection";
-import VerticalListSection from "../components/pageSections/VerticalListSection";
-import ScrollListSection from "../components/pageSections/ScrollListSection";
-import StatsInfoSection from "../components/pageSections/StatsInfoSection";
+import GlobalContext from "../../contexts/global";
+import useDocData from "../../hooks/useDocData";
+import HeroSection from "../../components/pageSections/HeroSection";
+import VerticalListSection from "../../components/pageSections/VerticalListSection";
+import ScrollListSection from "../../components/pageSections/ScrollListSection";
+import StatsInfoSection from "../../components/pageSections/StatsInfoSection";
 
 function HomePage() {
   const { setCurrentPage } = useContext(GlobalContext);
