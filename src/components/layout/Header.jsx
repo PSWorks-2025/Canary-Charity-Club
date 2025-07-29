@@ -1,27 +1,25 @@
-import PropTypes from "prop-types";
-import { useState, useContext } from "react";
-import GlobalContext from "../../contexts/global";
+import PropTypes from 'prop-types';
+import { useState, useContext } from 'react';
+import GlobalContext from '../../contexts/GlobalContext';
 // import logo from "/images/logo.png";
-import { useNavigate } from "react-router-dom";
-import useDocData from "../../hooks/useDocData";
-import { useLocation } from "react-router-dom";
+import { useNavigate } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 
 function Header() {
   const navigate = useNavigate();
   const location = useLocation();
-  const currentPage = location.pathname.replace("/", "");
+  const currentPage = location.pathname.replace('/', '');
 
-  const globalComponentsData = useDocData('Global', 'components');
-
+  const globalComponentsData = {}
   // const { currentPage, basePath } = useContext(GlobalContext);
 
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const pages = {
-    home:   "Home",
-    about:  "About",
-    events: "Events",
-    stories:"Stories",
-    donate: "Donate us",
+    home: 'Home',
+    about: 'About',
+    events: 'Events',
+    stories: 'Stories',
+    donate: 'Donate us',
   };
 
   const toggleDropdown = () => {
@@ -32,32 +30,36 @@ function Header() {
     <div className="w-full h-20 shadow-md shadow-gray-200 bg-primary text-primary-paragraph">
       <div
         className="absolute left-5 sm:left-10 md:left-20 lg:left-36 w-20 h-20 bg-cover bg-center"
-        style={{ backgroundImage: `url("${globalComponentsData?.logo || ""}")` }}
+        style={{
+          backgroundImage: `url("${globalComponentsData?.logo || ''}")`,
+        }}
       ></div>
       <div className="flex justify-between items-center text-center h-full px-4">
         <div className="hidden md:block h-full flex-grow">
           <ul className="flex justify-center h-full">
-            {Object.entries(pages)
-              .map(([pageId, pageName], index) => (
-                <li key={`page_${pageId}`} className="w-28 h-full flex flex-row">
-                  <button
-                    type="button"
-                    onClick={() => navigate( pageId=== "home" ? '/' : `/${pageId}`)}
-                    className={` w-full h-full transition-colors duration-200 cursor-pointer 
+            {Object.entries(pages).map(([pageId, pageName], index) => (
+              <li key={`page_${pageId}`} className="w-28 h-full flex flex-row">
+                <button
+                  type="button"
+                  onClick={() =>
+                    navigate(pageId === 'home' ? '/' : `/${pageId}`)
+                  }
+                  className={` w-full h-full transition-colors duration-200 cursor-pointer 
                       ${
-                        currentPage === pageId
-                          ? "text-secondary font-bold hover:text-primary hover:bg-secondary"
-                          : "hover:text-primary-hover hover:bg-primary-darken"
+                        currentPage === pageId ||
+                        (pageId === 'home' && currentPage === '')
+                          ? 'text-secondary font-bold hover:text-primary hover:bg-secondary'
+                          : 'hover:text-primary-hover hover:bg-primary-darken'
                       }
                       `}
-                  >
-                    {pageName}
-                  </button>
-                  { index < Object.entries(pages).length - 1 && (
-                    <br className="border-gray-200 border-1 h-1/2 my-auto" />
-                  )}
-                </li>
-              ))}
+                >
+                  {pageName}
+                </button>
+                {index < Object.entries(pages).length - 1 && (
+                  <br className="border-gray-200 border-1 h-1/2 my-auto" />
+                )}
+              </li>
+            ))}
           </ul>
         </div>
         <div className="md:hidden absolute right-10">
@@ -72,30 +74,29 @@ function Header() {
       {isDropdownOpen && (
         <div className="block md:hidden absolute left-0 right-0 bg-primary">
           <ul className="flex flex-col items-center">
-            {Object.entries(pages)
-              .map(([pageId, pageName], index) => (
-                <li
-                  key={`dropdown_page_${pageId}`}
-                  className="w-full text-center"
-                >
-                  <button
-                    type="button"
-                    onClick={() => navigate(`${basePath}/${pageId}`)}
-                    className={` w-full h-full py-3 transition-colors duration-200 cursor-pointer 
+            {Object.entries(pages).map(([pageId, pageName], index) => (
+              <li
+                key={`dropdown_page_${pageId}`}
+                className="w-full text-center"
+              >
+                <button
+                  type="button"
+                  onClick={() => navigate(`${basePath}/${pageId}`)}
+                  className={` w-full h-full py-3 transition-colors duration-200 cursor-pointer 
                       ${
                         currentPage === pageId
-                          ? "text-secondary font-bold hover:text-primary hover:bg-secondary"
-                          : "hover:text-primary-hover hover:bg-primary-darken"
+                          ? 'text-secondary font-bold hover:text-primary hover:bg-secondary'
+                          : 'hover:text-primary-hover hover:bg-primary-darken'
                       }
                       `}
-                  >
-                    {pageName}
-                  </button>
-                  { index < Object.entries(pages).length - 1 && (
-                    <hr className="border-gray-300 w-2/3 mx-auto" />
-                  )}
-                </li>
-              ))}
+                >
+                  {pageName}
+                </button>
+                {index < Object.entries(pages).length - 1 && (
+                  <hr className="border-gray-300 w-2/3 mx-auto" />
+                )}
+              </li>
+            ))}
           </ul>
         </div>
       )}

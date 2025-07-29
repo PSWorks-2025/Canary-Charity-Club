@@ -2,19 +2,16 @@ import PropTypes from 'prop-types';
 
 import Header from './components/layout/Header.jsx';
 import Footer from './components/layout/Footer.jsx';
-import { GlobalContextProvider } from './contexts/global.jsx';
-import CombinedContextProvider from './contexts/combined.jsx';
+import { GlobalContextProvider } from './contexts/GlobalContext.jsx';
 import { Outlet } from 'react-router';
 
 function Layout({ children }) {
   return (
-    <CombinedContextProvider>
       <GlobalContextProvider>
         <Header />
         <Outlet />
         <Footer />
       </GlobalContextProvider>
-    </CombinedContextProvider>
   );
 }
 Layout.propTypes = {

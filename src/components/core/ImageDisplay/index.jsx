@@ -1,19 +1,23 @@
-import React from "react";
-
-export const ImageDisplay = ({
+const ImageDisplay = ({
   src,
-  alt = "Image preview",
+  placeholder = "https://blog.photobucket.com/hubfs/upload_pics_online.png",
   className = "",
   style = {},
-  placeholder = "https://blog.photobucket.com/hubfs/upload_pics_online.png", // fallback placeholder
+  children,
 }) => {
   return (
-    <img
-      src={src || placeholder}
-      alt={alt}
-      className={`object-cover ${className}`}
-      style={style}
-      draggable={false}
-    />
+    <div
+      className={className}
+      style={{
+        backgroundImage: `url(${src || placeholder})`,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        ...style,
+      }}
+    >
+      {children}
+    </div>
   );
 };
+
+export default ImageDisplay;

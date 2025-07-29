@@ -1,33 +1,28 @@
-import { useContext, useEffect } from "react";
-import GlobalContext from "../../contexts/global";
-import useDocData from "../../hooks/useDocData";
-import HeroSection from "../../components/pageSections/HeroSection";
-import VerticalListSection from "../../components/pageSections/VerticalListSection";
-import ScrollListSection from "../../components/pageSections/ScrollListSection";
-import StatsInfoSection from "../../components/pageSections/StatsInfoSection";
+import { useContext, useEffect } from 'react';
+import GlobalContext from '../../contexts/GlobalContext';
+import HomeHeroSectionDisplay from '../../components/SectionsModel/Home/HeroSection/HomeHeroSectionDisplay';
+import StatHighlightDisplay from '../../components/SectionsModel/Home/StatHighlight/StatHighlightDisplay';
+import EventsHighlightDisplay from '../../components/SectionsModel/Home/EventsHighlight/EventsHighlightDisplay';
+import StoriesHighlightDisplay from '../../components/SectionsModel/Home/StoriesHighlight/StoriesHighlightDisplay';
 
 function HomePage() {
-  const { setCurrentPage } = useContext(GlobalContext);
+  const { setCurrentPage, heroSections, orgStats, tertiaryBackgroundColor, eventOverviews, storyOverviews } = useContext(GlobalContext);
 
-  useEffect(() => setCurrentPage("home"), [setCurrentPage]);
-
-  const mainPageComponentsData = useDocData("Main pages", "components");
+  useEffect(() => setCurrentPage('home'), [setCurrentPage]);
 
   return (
     <div className="w-full">
-      <HeroSection
-        image={mainPageComponentsData?.hero_sections?.home?.image || ""}
+      <HomeHeroSectionDisplay
+        image={heroSections?.home?.image || ''}
       />
-      <StatsInfoSection
-        statsData={mainPageComponentsData?.org_stats || {}}
-      />
-      <VerticalListSection
+      <StatHighlightDisplay orgStats={orgStats || {}} tertiaryBackgroundColor={tertiaryBackgroundColor} />
+      <EventsHighlightDisplay
         title="Các sự kiện đã và đang diễn ra"
-        listData={mainPageComponentsData?.event_overviews || {}}
+        listData={eventOverviews || {}}
       />
-      <ScrollListSection
+      <StoriesHighlightDisplay
         title="Các câu chuyện ý nghĩa"
-        listData={mainPageComponentsData?.story_overviews || {}}
+        data={storyOverviews || {}}
       />
     </div>
   );

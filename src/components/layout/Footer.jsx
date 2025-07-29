@@ -1,8 +1,8 @@
-import useDocData from '../../hooks/useDocData';
+
 // import logo from '/images/logo.png';
 
 function Footer() {
-  const globalComponentsData = useDocData('Global', 'components');
+  const globalComponentsData = {}
 
   return (
     <>

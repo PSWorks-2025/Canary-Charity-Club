@@ -1,4 +1,4 @@
-export const TextDisplay = ({
+const TextDisplay = ({
   value,
   className,
   isMultiline = false,
@@ -19,3 +19,5 @@ export const TextDisplay = ({
     </div>
   );
 };
+
+export default TextDisplay;
