@@ -1,16 +1,15 @@
 import PropTypes from 'prop-types';
 import { useState, useContext } from 'react';
-import GlobalContext from '../../contexts/GlobalContext';
 // import logo from "/images/logo.png";
 import { useNavigate } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
 
-function Header() {
+function HeaderNavigation() {
   const navigate = useNavigate();
   const location = useLocation();
   const currentPage = location.pathname.replace('/', '');
 
-  const globalComponentsData = {}
+  const globalComponentsData = {};
   // const { currentPage, basePath } = useContext(GlobalContext);
 
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
@@ -27,13 +26,7 @@ function Header() {
   };
 
   return (
-    <div className="w-full h-20 shadow-md shadow-gray-200 bg-primary text-primary-paragraph">
-      <div
-        className="absolute left-5 sm:left-10 md:left-20 lg:left-36 w-20 h-20 bg-cover bg-center"
-        style={{
-          backgroundImage: `url("${globalComponentsData?.logo || ''}")`,
-        }}
-      ></div>
+    <>
       <div className="flex justify-between items-center text-center h-full px-4">
         <div className="hidden md:block h-full flex-grow">
           <ul className="flex justify-center h-full">
@@ -81,7 +74,9 @@ function Header() {
               >
                 <button
                   type="button"
-                  onClick={() => navigate(`${basePath}/${pageId}`)}
+                  onClick={() =>
+                    navigate(pageId === 'home' ? '/' : `/${pageId}`)
+                  }
                   className={` w-full h-full py-3 transition-colors duration-200 cursor-pointer 
                       ${
                         currentPage === pageId
@@ -100,12 +95,12 @@ function Header() {
           </ul>
         </div>
       )}
-    </div>
+    </>
   );
 }
 
-Header.propTypes = {
+HeaderNavigation.propTypes = {
   currentPage: PropTypes.string,
 };
 
-export default Header;
+export default HeaderNavigation;

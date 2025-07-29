@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 
-import Header from './components/layout/Header.jsx';
-import Footer from './components/layout/Footer.jsx';
+import Header from './components/layout/Header/index.jsx';
+import Footer from './components/layout/Footer/index.jsx';
 import { GlobalContextProvider } from './contexts/GlobalContext.jsx';
 import { Outlet } from 'react-router';
 

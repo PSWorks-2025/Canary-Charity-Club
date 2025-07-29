@@ -6,7 +6,7 @@ import EventsHighlightDisplay from '../../components/SectionsModel/Home/EventsHi
 import StoriesHighlightDisplay from '../../components/SectionsModel/Home/StoriesHighlight/StoriesHighlightDisplay';
 
 function HomePage() {
-  const { setCurrentPage, heroSections, orgStats, tertiaryBackgroundColor, eventOverviews, storyOverviews } = useContext(GlobalContext);
+  const { setCurrentPage, heroSections, orgStats, eventOverviews, storyOverviews, tertiaryBackgroundColor } = useContext(GlobalContext);
 
   useEffect(() => setCurrentPage('home'), [setCurrentPage]);
 
@@ -19,6 +19,7 @@ function HomePage() {
       <EventsHighlightDisplay
         title="Các sự kiện đã và đang diễn ra"
         listData={eventOverviews || {}}
+        tertiaryBackgroundColor={tertiaryBackgroundColor}
       />
       <StoriesHighlightDisplay
         title="Các câu chuyện ý nghĩa"

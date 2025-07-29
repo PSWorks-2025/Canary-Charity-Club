@@ -17,7 +17,7 @@ export const GlobalContextProvider = ({ children }) => {
   const [primaryBackgroundColor, setPrimaryBackgroundColor] =
     useState('#ffffff');
   const [secondaryBackgroundColor, setSecondaryBackgroundColor] =
-    useState('#ffffff');
+    useState('#4160df');
   const [tertiaryBackgroundColor, setTertiaryBackgroundColor] =
     useState('#4160df');
 
