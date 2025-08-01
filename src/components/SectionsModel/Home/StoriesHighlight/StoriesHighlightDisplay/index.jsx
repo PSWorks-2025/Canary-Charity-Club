@@ -2,8 +2,10 @@ import PropTypes from 'prop-types';
 import { useState } from 'react';
 import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io';
 import { MdCircle } from 'react-icons/md';
+import { useNavigate } from 'react-router';
 
 const StorySectionDisplay = ({ data, title, buttonColor }) => {
+  const navigate = useNavigate()
   const itemsPerPage = 3;
   const sortedStories = Object.entries(data).sort(
     (a, b) => new Date(b[1].posted_time) - new Date(a[1].posted_time)
@@ -65,6 +67,15 @@ const StorySectionDisplay = ({ data, title, buttonColor }) => {
                   <button
                     className="font-semibold block mt-2"
                     style={{ color: buttonColor }}
+                    onClick={() =>
+                      navigate('/detail-page', {
+                        state: {
+                          id,
+                          title: story.title,
+                          thumbnail: story.thumbnail.src,
+                        },
+                      })
+                    }
                   >
                     Đọc thêm{' '}
                     <IoIosArrowForward className="inline-block mb-0.5 ml-1" />

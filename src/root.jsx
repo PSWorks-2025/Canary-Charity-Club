@@ -6,10 +6,10 @@ import Layout from './layout';
 
 import HomePage from './app/home';
 import AboutPage from './app/about/';
-// import EachStoryPage from "./app/stories/each/";
 import FundraisingPage from './app/donate/';
 import Events from './app/events/';
 import Story from './app/stories/';
+import DetailContent from './app/detailPage';
 
 const root = document.getElementById('root');
 
@@ -20,7 +20,7 @@ createRoot(root).render(
       <Route path="/" element={<Layout />}>
         <Route index element={<HomePage />} />
         <Route path="about" element={<AboutPage />} />
-        {/* <Route path="eachStory" element={<EachStoryPage {...mockStory} />} /> */}
+        <Route path="detail-page" element={<DetailContent />} />
         <Route path="donate" element={<FundraisingPage />} />
         <Route path="events" element={<Events />} />
         <Route path="stories" element={<Story />} />

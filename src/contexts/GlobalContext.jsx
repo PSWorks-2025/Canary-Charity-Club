@@ -49,6 +49,11 @@ export const GlobalContextProvider = ({ children }) => {
   const [storyOverviews, setStoryOverviews] = useState({});
 
   useEffect(() => {
+    console.log(projectOverviews)
+  }, [projectOverviews])
+  
+
+  useEffect(() => {
     const handleGetData = async () => {
       try {
         const res = await readData();

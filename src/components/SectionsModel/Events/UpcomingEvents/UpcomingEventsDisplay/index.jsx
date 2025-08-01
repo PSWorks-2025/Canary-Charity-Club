@@ -1,29 +1,59 @@
-import { useNavigate } from "react-router";
-import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
-import { MdCircle } from "react-icons/md";
-import PropTypes from "prop-types";
-import { useState } from "react";
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router';
+import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io';
+import { MdCircle } from 'react-icons/md';
+import PropTypes from 'prop-types';
 
-// ScrollListItem
-function ScrollListItem({ imageUrl, title, description, href }) {
+const UpcomingEventsDisplay = ({ title, listData }) => (
+  <div>
+    <div className="pt-20 text-center text-[2.5rem] font-bold text-primary-title">
+      {title}
+    </div>
+    <ScrollList>
+      {Object.entries(listData).map(([id, detail]) => (
+        <ScrollListItem
+          key={`story_${id}`}
+          id={id}
+          imageUrl={detail?.thumbnail?.src || ''}
+          title={detail?.title || ''}
+          description={detail?.abstract || ''}
+        />
+      ))}
+    </ScrollList>
+  </div>
+);
+
+UpcomingEventsDisplay.propTypes = {
+  title: PropTypes.string.isRequired,
+  listData: PropTypes.object.isRequired,
+};
+
+export default UpcomingEventsDisplay;
+
+export function ScrollListItem({ imageUrl, title, description, id }) {
   const navigate = useNavigate();
 
   return (
-    <div className="w-88 mr-8 h-full">
+    <div className="w-[22rem] shrink-0">
       <div
-        className="w-full h-60 bg-cover bg-center rounded-sm"
+        className="h-60 bg-cover bg-center rounded-sm"
         style={{ backgroundImage: `url("${imageUrl}")` }}
-      ></div>
-      <div className="font-bold text-2xl pt-5 text-primary-title">{title}</div>
-      <p className="w-full text-base/5 py-5 text-primary-paragraph">
-        {description}
-      </p>
+      />
+      <div className="pt-5 text-2xl font-bold text-primary-title">{title}</div>
+      <p className="py-5 text-base/5 text-primary-paragraph">{description}</p>
       <button
-        onClick={() => navigate(href)}
-        className="text-secondary font-semibold transition-all duration-200 hover:text-secondary-hover hover:translate-x-1"
+        onClick={() =>
+          navigate('/detail-page', {
+            state: {
+              id,
+              title: title,
+              thumbnail: imageUrl,
+            },
+          })
+        }
+        className="text-secondary font-semibold transition hover:text-secondary-hover hover:translate-x-1"
       >
-        Đọc thêm
-        <IoIosArrowForward className="inline-block mb-0.5" />
+        Đọc thêm <IoIosArrowForward className="inline-block mb-0.5" />
       </button>
     </div>
   );
@@ -36,41 +66,52 @@ ScrollListItem.propTypes = {
   href: PropTypes.string,
 };
 
-// ScrollList
-function ScrollList({ children }) {
-  const numberOfPages = children ? Math.ceil(children.length / 3) : 0;
+export function ScrollList({ children }) {
+  const ITEMS_PER_PAGE = 3;
+  const ITEM_WIDTH = 352 + 32; // width (22rem = 352px) + gap (2rem = 32px)
+  const pages = Math.ceil(React.Children.count(children) / ITEMS_PER_PAGE);
   const [page, setPage] = useState(0);
 
   return (
     <div className="w-full pt-12 flex justify-center">
-      <div className="w-280 h-112 relative">
+      <div className="relative w-[1120px] h-[448px]">
+        {/* Arrows */}
         <button
-          onClick={() => setPage(Math.max(page - 1, 0))}
-          className="hover:scale-105 hover:bg-primary-darken-2 transition-all duration-200 w-11 h-11 absolute -left-6 top-54 rounded-full bg-primary-darken flex justify-center items-center cursor-pointer"
+          onClick={() => setPage((p) => Math.max(p - 1, 0))}
+          className="absolute left-[-24px] top-1/2 transform -translate-y-1/2 w-11 h-11 rounded-full bg-primary-darken flex items-center justify-center hover:scale-105 hover:bg-primary-darken-2 z-10"
         >
           <IoIosArrowBack className="w-5 h-5" />
         </button>
+
         <button
-          onClick={() => setPage(Math.min(page + 1, numberOfPages - 1))}
-          className="hover:scale-105 hover:bg-primary-darken-2 transition-all duration-200 w-11 h-11 absolute -right-6 top-54 rounded-full bg-primary-darken flex justify-center items-center cursor-pointer"
+          onClick={() => setPage((p) => Math.min(p + 1, pages - 1))}
+          className="absolute right-[-24px] top-1/2 transform -translate-y-1/2 w-11 h-11 rounded-full bg-primary-darken flex items-center justify-center hover:scale-105 hover:bg-primary-darken-2 z-10"
         >
           <IoIosArrowForward className="w-5 h-5" />
         </button>
+
+        {/* Scrollable List */}
         <div className="w-full h-full overflow-hidden">
           <div
-            className="w-100000 h-full flex transition-all duration-750"
-            style={{ marginLeft: `calc(${-288 * page} * var(--spacing))` }}
+            className="flex gap-x-8 transition-all duration-700"
+            style={{ transform: `translateX(-${page * 3 * ITEM_WIDTH}px)` }}
           >
             {children}
           </div>
         </div>
-        <div className="absolute bottom-0 w-full flex justify-center">
-          {Array.from(Array(numberOfPages).keys()).map((index) => (
+
+        {/* Dots */}
+        <div className="absolute bottom-2 w-full flex justify-center">
+          {Array.from({ length: pages }).map((_, i) => (
             <MdCircle
-              key={`dot_${index}`}
-              className={`w-2.5 h-2.5 mx-0.5 transition-all duration-200 cursor-pointer 
-                ${page === index ? "text-secondary scale-115" : "text-primary-darken-2"}`}
-              onClick={() => setPage(index)}
+              key={i}
+              onClick={() => setPage(i)}
+              className={`w-2.5 h-2.5 mx-0.5 cursor-pointer transition-transform 
+                ${
+                  page === i
+                    ? 'text-secondary scale-115'
+                    : 'text-primary-darken-2'
+                }`}
             />
           ))}
         </div>
@@ -80,32 +121,5 @@ function ScrollList({ children }) {
 }
 
 ScrollList.propTypes = {
-  children: PropTypes.array,
-};
-
-// Main Exported Component
-export default function UpcomingEventsDisplay({ title, listData }) {
-  return (
-    <div>
-      <div className="w-full pt-20 font-bold text-[2.5rem] text-primary-title text-center">
-        {title}
-      </div>
-      <ScrollList>
-        {Object.entries(listData).map(([id, detail]) => (
-          <ScrollListItem
-            key={`event_${id}`}
-            href={detail?.link || "#"}
-            imageUrl={detail?.thumbnail?.src || ""}
-            title={detail?.title || ""}
-            description={detail?.abstract || ""}
-          />
-        ))}
-      </ScrollList>
-    </div>
-  );
-}
-
-UpcomingEventsDisplay.propTypes = {
-  title: PropTypes.string.isRequired,
-  listData: PropTypes.object.isRequired,
+  children: PropTypes.node,
 };

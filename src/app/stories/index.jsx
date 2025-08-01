@@ -4,7 +4,7 @@ import './styles.css';
 import StoriesHeroSectionDisplay from '../../components/SectionsModel/Story/HeroSection/StoryHeroSectionDisplay';
 import StoriesListDisplay from '../../components/SectionsModel/Story/StoriesList/StoriesListDisplay';
 function StoriesPage() {
-  const { setCurrentPage, heroSections, storyOverviews } = useContext(GlobalContext);
+  const { setCurrentPage, heroSections, storyOverviews, tertitaryBackgroundColor } = useContext(GlobalContext);
 
   useEffect(() => setCurrentPage('stories'), [setCurrentPage]);
 
@@ -14,6 +14,8 @@ function StoriesPage() {
         title={heroSections?.stories?.title}
         description={heroSections?.stories?.description}
         image={heroSections?.stories?.image || ''}
+        id={heroSections?.stories?.id}
+        buttonColor={tertitaryBackgroundColor}
       />
       <StoriesListDisplay
         title="Các câu chuyện ý nghĩa"

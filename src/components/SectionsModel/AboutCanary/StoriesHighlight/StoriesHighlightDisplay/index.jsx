@@ -1,9 +1,8 @@
-import React from "react";
-import { useNavigate } from "react-router";
-import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
-import { MdCircle } from "react-icons/md";
-import { useState } from "react";
-import PropTypes from "prop-types";
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router';
+import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io';
+import { MdCircle } from 'react-icons/md';
+import PropTypes from 'prop-types';
 
 const StoriesHighlightDisplay = ({ title, listData }) => (
   <div>
@@ -14,29 +13,28 @@ const StoriesHighlightDisplay = ({ title, listData }) => (
       {Object.entries(listData).map(([id, detail]) => (
         <ScrollListItem
           key={`story_${id}`}
-          href="#"
-          imageUrl={detail?.thumbnail?.src || ""}
-          title={detail?.title || ""}
-          description={detail?.abstract || ""}
+          id={id}
+          imageUrl={detail?.thumbnail?.src || ''}
+          title={detail?.title || ''}
+          description={detail?.abstract || ''}
         />
       ))}
     </ScrollList>
   </div>
 );
 
-
 StoriesHighlightDisplay.propTypes = {
-  title: PropTypes.string.isRequired, // Expecting a string for the title of the list
-  listData: PropTypes.object.isRequired, // Expecting an object with event details
+  title: PropTypes.string.isRequired,
+  listData: PropTypes.object.isRequired,
 };
 
 export default StoriesHighlightDisplay;
 
-export function ScrollListItem({ imageUrl, title, description, href = "#" }) {
+export function ScrollListItem({ imageUrl, title, description, id }) {
   const navigate = useNavigate();
 
   return (
-    <div className="w-88 mr-8">
+    <div className="w-[22rem] shrink-0">
       <div
         className="h-60 bg-cover bg-center rounded-sm"
         style={{ backgroundImage: `url("${imageUrl}")` }}
@@ -44,7 +42,15 @@ export function ScrollListItem({ imageUrl, title, description, href = "#" }) {
       <div className="pt-5 text-2xl font-bold text-primary-title">{title}</div>
       <p className="py-5 text-base/5 text-primary-paragraph">{description}</p>
       <button
-        onClick={() => navigate(href)}
+        onClick={() =>
+          navigate('/detail-page', {
+            state: {
+              id,
+              title: title,
+              thumbnail: imageUrl,
+            },
+          })
+        }
         className="text-secondary font-semibold transition hover:text-secondary-hover hover:translate-x-1"
       >
         Đọc thêm <IoIosArrowForward className="inline-block mb-0.5" />
@@ -62,24 +68,24 @@ ScrollListItem.propTypes = {
 
 export function ScrollList({ children }) {
   const ITEMS_PER_PAGE = 3;
-  const ITEM_WIDTH = 88 + 8; // width + margin-right (in Tailwind unit spacing)
+  const ITEM_WIDTH = 352 + 32; // width (22rem = 352px) + gap (2rem = 32px)
   const pages = Math.ceil(React.Children.count(children) / ITEMS_PER_PAGE);
   const [page, setPage] = useState(0);
 
   return (
     <div className="w-full pt-12 flex justify-center">
-      <div className="relative w-[1120px] h-[448px]"> {/* 280 * 4 for example */}
+      <div className="relative w-[1120px] h-[448px]">
         {/* Arrows */}
         <button
           onClick={() => setPage((p) => Math.max(p - 1, 0))}
-          className="absolute left-[-24px] top-1/2 transform -translate-y-1/2 w-11 h-11 rounded-full bg-primary-darken flex items-center justify-center hover:scale-105 hover:bg-primary-darken-2"
+          className="absolute left-[-24px] top-1/2 transform -translate-y-1/2 w-11 h-11 rounded-full bg-primary-darken flex items-center justify-center hover:scale-105 hover:bg-primary-darken-2 z-10"
         >
           <IoIosArrowBack className="w-5 h-5" />
         </button>
 
         <button
           onClick={() => setPage((p) => Math.min(p + 1, pages - 1))}
-          className="absolute right-[-24px] top-1/2 transform -translate-y-1/2 w-11 h-11 rounded-full bg-primary-darken flex items-center justify-center hover:scale-105 hover:bg-primary-darken-2"
+          className="absolute right-[-24px] top-1/2 transform -translate-y-1/2 w-11 h-11 rounded-full bg-primary-darken flex items-center justify-center hover:scale-105 hover:bg-primary-darken-2 z-10"
         >
           <IoIosArrowForward className="w-5 h-5" />
         </button>
@@ -87,8 +93,8 @@ export function ScrollList({ children }) {
         {/* Scrollable List */}
         <div className="w-full h-full overflow-hidden">
           <div
-            className="flex transition-all duration-700"
-            style={{ transform: `translateX(-${page * 100}%)` }}
+            className="flex gap-x-8 transition-all duration-700"
+            style={{ transform: `translateX(-${page * 3 * ITEM_WIDTH}px)` }}
           >
             {children}
           </div>
@@ -101,7 +107,11 @@ export function ScrollList({ children }) {
               key={i}
               onClick={() => setPage(i)}
               className={`w-2.5 h-2.5 mx-0.5 cursor-pointer transition-transform 
-                ${page === i ? "text-secondary scale-115" : "text-primary-darken-2"}`}
+                ${
+                  page === i
+                    ? 'text-secondary scale-115'
+                    : 'text-primary-darken-2'
+                }`}
             />
           ))}
         </div>
@@ -111,5 +121,5 @@ export function ScrollList({ children }) {
 }
 
 ScrollList.propTypes = {
-  children: PropTypes.array,
+  children: PropTypes.node,
 };

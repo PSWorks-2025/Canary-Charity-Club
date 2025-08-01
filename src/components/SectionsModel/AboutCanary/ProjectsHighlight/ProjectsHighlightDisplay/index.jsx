@@ -2,8 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import ImageDisplay from '../../../../core/ImageDisplay';
 import TextDisplay from '../../../../core/TextDisplay';
+import { useNavigate } from 'react-router';
 
 const ProjectHighlightDisplay = ({ listData }) => {
+  // console.log(Object.entries(listData).map(([id, project]) => console.log(project.thumbnail)))
+  const navigate = useNavigate();
   return (
     <section className="flex flex-col items-center w-full">
       <TextDisplay
@@ -14,13 +17,21 @@ const ProjectHighlightDisplay = ({ listData }) => {
         {Object.entries(listData).map(([id, project]) => (
           <div
             key={id}
-            className="relative h-96 rounded-lg overflow-hidden shadow-md"
+            className="relative h-96 rounded-lg overflow-hidden shadow-md cursor-pointer"
+            onClick={() =>
+              navigate('/detail-page', {
+                state: {
+                  id,
+                  title: project.title,
+                  thumbnail: project.thumbnail.src,
+                },
+              })
+            }
           >
             <ImageDisplay
-              src={project.thumbnail.src}
               className="w-full h-full bg-cover bg-center"
               style={{
-                backgroundImage: `linear-gradient(to bottom, transparent 70%, rgba(0, 0, 0, 0.6))`,
+                backgroundImage: `linear-gradient(to bottom, transparent 70%, rgba(0, 0, 0, 0.6)), url(${project.thumbnail.src})`,
               }}
             />
             <TextDisplay

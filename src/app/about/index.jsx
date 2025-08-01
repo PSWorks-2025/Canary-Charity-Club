@@ -14,8 +14,6 @@ function Aboutpage() {
 
   useEffect(() => setCurrentPage('about'), [setCurrentPage]);
 
-  const mainPageComponentsData = {};
-  console.log(projectOverviews);
   return (
     <div className="w-full">
       <AboutHeroSectionDisplay
