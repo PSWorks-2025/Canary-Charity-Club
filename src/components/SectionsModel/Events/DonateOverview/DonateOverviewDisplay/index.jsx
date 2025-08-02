@@ -1,40 +1,63 @@
+import React from 'react';
 import PropTypes from 'prop-types';
-import TextDisplay from '../../../../core/TextDisplay';
+import { useNavigate } from 'react-router';
 
 function DonateOverviewDisplay({ pageData, buttonColor }) {
+  const navigate = useNavigate();
+  const { heading, title1, title2, images = [] } = pageData || {};
+  console.log(heading, title1, images)
   return (
-    <>
-      <TextDisplay
-        className="w-full text-[2.5rem] font-bold text-black text-center mb-6"
-        value={pageData.heading}
-      />
-      <div className="flex flex-row justify-center items-start gap-10 text-center">
-        {[0, 1].map((index) => (
-          <div key={index} className="flex flex-col flex-1 items-center">
-            <div
-              className="w-full h-[40vh] bg-gray-600 relative flex flex-col justify-end rounded-lg bg-cover bg-center"
-              style={{
-                backgroundImage: `url("${
-                  pageData.images?.[index] ||
-                  'https://blog.photobucket.com/hubfs/upload_pics_online.png'
-                }")`,
-              }}
-            >
-              <TextDisplay
-                className="text-base font-semibold text-white bg-black/40 px-2 py-1 rounded-t"
-                value={index === 0 ? pageData.title1 : pageData.title2}
-              />
-            </div>
-            <button
-              className="mt-2 text-white font-medium px-3 py-2 rounded-full opacity-80 pointer-events-none"
-              style={{ backgroundColor: buttonColor }}
-            >
-              {index === 0 ? 'Mua ngay' : 'Ủng hộ'}
-            </button>
-          </div>
-        ))}
+    <div className="w-full">
+      <div className="w-full text-2xl sm:text-[2.5rem] font-bold text-black text-center mb-4 sm:mb-6">
+        {heading || 'Tiêu đề chưa được thiết lập'}
       </div>
-    </>
+
+      <div className="flex flex-col sm:flex-row justify-center items-start gap-6 sm:gap-10 text-center max-w-[1600px] mx-auto">
+        {/* First column */}
+        <div className="flex flex-col flex-1 items-center">
+          <div className="w-full h-[30vh] sm:h-[40vh] bg-gray-600 relative flex flex-col justify-end rounded-lg overflow-hidden">
+            <div className="text-sm sm:text-base font-semibold text-white text-center mb-2 px-2">
+              {title1 || 'Tiêu đề chưa thiết lập'}
+            </div>
+            <div
+              className="bg-cover bg-center w-full h-full"
+              style={{
+                backgroundImage: `url("${images[0] || 'https://blog.photobucket.com/hubfs/upload_pics_online.png'}")`,
+              }}
+            />
+          </div>
+          <button
+            className="mt-2 text-white font-medium px-2 sm:px-3 py-1.5 sm:py-2 rounded-full hover:opacity-50 transition-opacity duration-200 text-sm sm:text-base"
+            style={{ backgroundColor: buttonColor }}
+            onClick={() => navigate('/donate')}
+          >
+            Mua ngay
+          </button>
+        </div>
+
+        {/* Second column */}
+        <div className="flex flex-col flex-1 items-center">
+          <div className="w-full h-[30vh] sm:h-[40vh] bg-gray-600 relative flex flex-col justify-end rounded-lg overflow-hidden">
+            <div className="text-sm sm:text-base font-semibold text-white text-center mb-2 px-2">
+              {title2 || 'Tiêu đề chưa thiết lập'}
+            </div>
+            <div
+              className="bg-cover bg-center w-full h-full"
+              style={{
+                backgroundImage: `url("${images[1] || 'https://blog.photobucket.com/hubfs/upload_pics_online.png'}")`,
+              }}
+            />
+          </div>
+          <button
+            className="mt-2 text-white font-medium px-2 sm:px-3 py-1.5 sm:py-2 rounded-full hover:opacity-50 transition-opacity duration-200 text-sm sm:text-base"
+            style={{ backgroundColor: buttonColor }}
+            onClick={() => navigate('/donate')}
+          >
+            Ủng hộ
+          </button>
+        </div>
+      </div>
+    </div>
   );
 }
 

@@ -8,13 +8,13 @@ const TextDisplay = ({
     <div className="relative w-full">
       {isMultiline ? (
         <div
-          className={`pl-8 pt-6 whitespace-pre-wrap ${className}`}
+          className={`whitespace-pre-wrap ${className}`}
           style={{ minHeight: `${rows * 1.5}rem` }}
         >
           {value}
         </div>
       ) : (
-        <div className={`pl-8 py-2 ${className}`}>{value}</div>
+        <div className={`${className}`}>{value}</div>
       )}
     </div>
   );

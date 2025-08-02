@@ -20,12 +20,12 @@ const EventsHeroSectionDisplay = ({ title, description, image }) => {
       >
         <div className="w-1/2 absolute left-10 mb-15">
           <TextDisplay
-            className="w-full text-[2.5rem] font-semibold text-white outline-none bg-transparent"
+            className="pl-8 w-full text-[2.5rem] font-semibold text-white outline-none bg-transparent"
             value={title}
           />
           <TextDisplay
             type="textarea"
-            className="w-full text-base text-white outline-none bg-transparent resize-none"
+            className="pl-8 pb-6 w-full text-base text-white outline-none bg-transparent resize-none"
             value={description}
             rows="4"
           />

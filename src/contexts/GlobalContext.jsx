@@ -47,11 +47,20 @@ export const GlobalContextProvider = ({ children }) => {
   const [projectOverviews, setProjectOverviews] = useState({});
   const [statements, setStatements] = useState({});
   const [storyOverviews, setStoryOverviews] = useState({});
+  const [sectionTitles, setSectionTitles] = useState({
+    members: 'Thành viên',
+    activity_history: 'Lịch sử hoạt động',
+    stories: 'Câu chuyện',
+    projects: 'Dự án & hoạt động nổi bật đã thực hiện',
+    fundraising_header: 'Quỹ Gây Quỹ',
+    campaign_details: 'Chi Tiết Chiến Dịch',
+    donor_list: 'Danh Sách Ủng Hộ',
+    events: 'Sự kiện',
+  });
 
   useEffect(() => {
-    console.log(projectOverviews)
-  }, [projectOverviews])
-  
+    console.log(projectOverviews);
+  }, [projectOverviews]);
 
   useEffect(() => {
     const handleGetData = async () => {
@@ -79,7 +88,6 @@ export const GlobalContextProvider = ({ children }) => {
           setSocialLinksData(res.global.social_media || {});
         }
         if (res?.main) {
-          console.log(res.main)
           setMainData(res.main);
           setActivityHistory(res.main.activity_history || []);
           setEventOverviews(res.main.event_overviews || {});
@@ -91,6 +99,16 @@ export const GlobalContextProvider = ({ children }) => {
           setProjectOverviews(res.main.project_overviews || {});
           setStatements(res.main.statements || {});
           setStoryOverviews(res.main.story_overviews || {});
+          setSectionTitles({
+            members: res.main.section_titles?.members || 'Thành viên',
+            activity_history: res.main.section_titles?.activity_history || 'Lịch sử hoạt động',
+            stories: res.main.section_titles?.stories || 'Câu chuyện',
+            projects: res.main.section_titles?.projects || 'Dự án & hoạt động nổi bật đã thực hiện',
+            fundraising_header: res.main.section_titles?.fundraising_header || 'Quỹ Gây Quỹ',
+            campaign_details: res.main.section_titles?.campaign_details || 'Chi Tiết Chiến Dịch',
+            donor_list: res.main.section_titles?.donor_list || 'Danh Sách Ủng Hộ',
+            events: res.main.section_titles?.events || 'Sự kiện',
+          });
         }
       } catch (error) {
         console.error('Error in GlobalProvider useEffect:', error);
@@ -149,6 +167,8 @@ export const GlobalContextProvider = ({ children }) => {
         setStatements,
         storyOverviews,
         setStoryOverviews,
+        sectionTitles, 
+        setSectionTitles,
 
         currentPage,
         setCurrentPage,

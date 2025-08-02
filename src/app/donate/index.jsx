@@ -3,28 +3,30 @@ import PropTypes from 'prop-types';
 import GlobalContext from '../../contexts/GlobalContext';
 import FundraisingHeroSectionDisplay from '../../components/SectionsModel/Donate/DonateProgress/FundraisingHeroSectionDisplay';
 import DonorListDisplay from '../../components/SectionsModel/Donate/DonorList/DonorListDisplay';
+import CampaignDetailsDisplay from '../../components/SectionsModel/Donate/CampaignDetails/CampaignDetailsDisplay';
 
-const DonatePage = ({
-  campaignTitle,
-  campaignDescription,
-}) => {
-  const { setCurrentPage, fundraising } = useContext(GlobalContext);
+const DonatePage = ({ campaignTitle, campaignDescription }) => {
+  const {
+    setCurrentPage,
+    fundraising,
+    sectionTitles,
+    secondaryBackgroundColor,
+  } = useContext(GlobalContext);
 
-  const mainPageComponentsData = {}
+  const mainPageComponentsData = {};
 
   useEffect(() => {
     setCurrentPage('donate');
   }, [setCurrentPage]);
 
-//   const imagesLoaded = useImagePreloader([
-//   mainPageComponentsData?.hero_sections?.donate?.image || '',
-//   mainPageComponentsData?.hero_sections?.donate?.qrcode || '',
-// ]);
+  //   const imagesLoaded = useImagePreloader([
+  //   mainPageComponentsData?.hero_sections?.donate?.image || '',
+  //   mainPageComponentsData?.hero_sections?.donate?.qrcode || '',
+  // ]);
 
-//   if (!imagesLoaded) {
-//     return <LoadingScreen />;
-//   }
-
+  //   if (!imagesLoaded) {
+  //     return <LoadingScreen />;
+  //   }
 
   const handleSupportClick = () => {
     alert('Cảm ơn bạn đã ủng hộ! 🎉');
@@ -34,23 +36,24 @@ const DonatePage = ({
     <div className="bg-[#fafafa] min-h-screen relative overflow-hidden p-6">
       {/* Hero Section */}
       <FundraisingHeroSectionDisplay
-        imageUrl={fundraising?.image_url || "https"}
-        fundraiserName={fundraising?.fundraiser_name || ""}
+        imageUrl={fundraising?.image_url || 'https'}
+        fundraiserName={fundraising?.fundraiser_name || ''}
         amountRaised={fundraising?.amount_raised || 0}
         goalAmount={fundraising?.goal_amount || 0}
-        qrCodeUrl={fundraising?.qr_code_url || "https"}
+        qrCodeUrl={fundraising?.qr_code_url || 'https'}
         onSupportClick={handleSupportClick}
       />
 
       {/* Campaign Details */}
-      <div className="mt-6 px-6">
-        <h1 className="text-4xl font-bold text-gray-900">{campaignTitle}</h1>
-        <p className="text-gray-700 mt-2">{campaignDescription}</p>
-      </div>
+      <CampaignDetailsDisplay
+        campaign_title={fundraising?.campaign_title || ''}
+        campaign_description={fundraising?.campaign_description || ''}
+        buttonColor={secondaryBackgroundColor}
+        sectionTitles={sectionTitles}
+      />
 
       {/* Donors List */}
       <DonorListDisplay donors={fundraising?.donors} />
-
     </div>
   );
 };

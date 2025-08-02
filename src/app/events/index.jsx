@@ -32,12 +32,12 @@ console.log(heroSections)
         description={heroSections?.events?.description}
         image={heroSections?.events?.image || ''}
       />
-      <SingleProjectOverviewDisplay
+      {/* <SingleProjectOverviewDisplay
       // title="Tổng quan dự án"
       // listData={projectOverviews || {}}
-      />
+      /> */}
       <DonateOverviewDisplay
-        pageData={donateOverview}
+        pageData={heroSections.donate || donateOverview}
         buttonColor={secondaryBackgroundColor}
       />
       <RecentProjectDisplay listData={projectOverviews || {}} />

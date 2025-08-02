@@ -21,32 +21,46 @@ const FundraisingHeroSectionDisplay = ({
         src={imageUrl}
         className="rounded-xl shadow-xl relative w-full h-[400px] flex items-center justify-end bg-cover bg-center text-dark p-8"
       >
-        <div className="bg-white/80 p-6 rounded-xl shadow-lg max-w-md w-full">
-          <TextDisplay value={fundraiserName} className="text-2xl font-bold" />
-          <div className="mt-4 w-full rounded-full p-1 border-2 border-gray-400">
-            <div className="w-full bg-gray-400 rounded-full h-4">
+        <div className="bg-white/90 p-6 rounded-2xl shadow-xl max-w-md w-full space-y-4">
+          {/* Title */}
+          <TextDisplay
+            value={fundraiserName}
+            className="text-3xl font-bold text-center text-gray-800"
+          />
+
+          {/* Progress Bar */}
+          <div className="border-2 p-0.5 border-gray-400  rounded-full">
+            <div className="relative w-full h-5 bg-gray-300 rounded-full overflow-hidden">
               <div
-                className="bg-blue-500 h-4 rounded-full"
-                style={{ width: `${progressPercentage}%` }}
+                className="absolute left-0 top-0 h-full bg-blue-600 transition-all duration-500"
+                style={{
+                  width: `${progressPercentage}%`,
+                  backgroundColor: buttonColor,
+                }}
               />
             </div>
           </div>
-          <div className="flex justify-between mt-2 text-sm">
+
+          {/* Progress Stats */}
+          <div className="flex justify-between text-sm text-gray-700 font-medium">
             <TextDisplay value={`${amountRaised.toLocaleString()} VND`} />
             <TextDisplay value={`${progressPercentage.toFixed(0)}%`} />
           </div>
+
+          {/* Goal */}
           <TextDisplay
             value={`Cần đạt được: ${goalAmount.toLocaleString()} VND`}
-            className="mt-2"
+            className="text-sm text-gray-600 text-center"
           />
-          <div className="flex items-center justify-around mt-4">
-            {/* <ImageDisplay src={qrCodeUrl} className="w-20 h-20" alt="QR Code" /> */}
+
+          {/* Action Button */}
+          <div className="flex justify-center pt-4">
             <button
-              className="bg-blue-600 text-white px-4 py-2 rounded-lg"
+              className="px-6 py-2 text-white font-semibold rounded-lg shadow-md hover:shadow-lg transition duration-300"
               style={{ backgroundColor: buttonColor }}
               onClick={() => setShowQRModal(true)}
             >
-              Ủng hộ
+              Ủng hộ ngay
             </button>
           </div>
         </div>
