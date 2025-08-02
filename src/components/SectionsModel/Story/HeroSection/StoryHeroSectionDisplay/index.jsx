@@ -17,7 +17,7 @@ const StoriesHeroSectionDisplay = ({
     e.stopPropagation();
     navigate('/detail-page', {
       state: {
-        id,
+        id: 'story_hero',
         title,
         thumbnail: image,
       },
@@ -47,7 +47,7 @@ const StoriesHeroSectionDisplay = ({
         />
         <button
           onClick={handleReadMore}
-          className="text-white font-semibold px-4 sm:px-6 py-2 sm:py-2.5 rounded-full transition-all duration-200 shadow-md hover:opacity-80 hover:scale-[1.02] text-sm sm:text-base ml-8"
+          className={`text-white font-semibold px-4 sm:px-6 py-2 sm:py-2.5 rounded-full transition-all duration-200 shadow-md hover:opacity-80 hover:scale-[1.02] text-sm sm:text-base ml-8 bg-[${buttonColor}]`}
           style={{ backgroundColor: buttonColor }}
         >
           Đọc thêm
