@@ -1,16 +1,15 @@
 import PropTypes from 'prop-types';
-
-import Header from './components/layout/Header/index.jsx';
-import Footer from './components/layout/Footer/index.jsx';
-import { GlobalContextProvider } from './contexts/GlobalContext.jsx';
+import Header from '../Section-And-Core-Component/CanarySectionsModel/Header/index.jsx';
+import Footer from '../Section-And-Core-Component/CanarySectionsModel/Footer/index.jsx';
+import GlobalContext, { GlobalContextProvider } from './contexts/GlobalContext.jsx';
 import { Outlet } from 'react-router';
 
 function Layout({ children }) {
   return (
       <GlobalContextProvider>
-        <Header />
+        <Header GlobalContext={GlobalContext} />
         <Outlet />
-        <Footer />
+        <Footer GlobalContext={GlobalContext} />
       </GlobalContextProvider>
   );
 }

@@ -1,17 +1,12 @@
 import { useEffect, useContext } from 'react';
 import PropTypes from 'prop-types';
 import GlobalContext from '../../contexts/GlobalContext';
-import FundraisingHeroSectionDisplay from '../../components/SectionsModel/Donate/DonateProgress/FundraisingHeroSectionDisplay';
-import DonorListDisplay from '../../components/SectionsModel/Donate/DonorList/DonorListDisplay';
-import CampaignDetailsDisplay from '../../components/SectionsModel/Donate/CampaignDetails/CampaignDetailsDisplay';
+import FundraisingHeroSectionDisplay from '../../../Section-And-Core-Component/CanarySectionsModel/Donate/DonateProgress/FundraisingHeroSectionDisplay';
+import DonorListDisplay from '../../../Section-And-Core-Component/CanarySectionsModel/Donate/DonorList/DonorListDisplay';
+import CampaignDetailsDisplay from '../../../Section-And-Core-Component/CanarySectionsModel/Donate/CampaignDetails/CampaignDetailsDisplay';
 
 const DonatePage = ({ campaignTitle, campaignDescription }) => {
-  const {
-    setCurrentPage,
-    fundraising,
-    sectionTitles,
-    secondaryBackgroundColor,
-  } = useContext(GlobalContext);
+  const { setCurrentPage, fundraising, sectionTitles, secondaryBackgroundColor } = useContext(GlobalContext);
 
   const mainPageComponentsData = {};
 

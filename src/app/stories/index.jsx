@@ -1,8 +1,8 @@
 import { useContext, useEffect } from 'react';
 import GlobalContext from '../../contexts/GlobalContext';
 import './styles.css';
-import StoriesHeroSectionDisplay from '../../components/SectionsModel/Story/HeroSection/StoryHeroSectionDisplay';
-import StoriesListDisplay from '../../components/SectionsModel/Story/StoriesList/StoriesListDisplay';
+import StoriesHeroSectionDisplay from '../../../Section-And-Core-Component/CanarySectionsModel/Story/HeroSection/StoryHeroSectionDisplay';
+import StoriesListDisplay from '../../../Section-And-Core-Component/CanarySectionsModel/Story/StoriesList/StoriesListDisplay';
 
 function StoriesPage() {
   const { setCurrentPage, heroSections, storyOverviews, sectionTitles, secondaryBackgroundColor } = useContext(GlobalContext);
@@ -11,17 +11,14 @@ function StoriesPage() {
 
   return (
     <div className="w-full">
-      <StoriesHeroSectionDisplay      
+      <StoriesHeroSectionDisplay
         title={heroSections?.stories?.title}
         description={heroSections?.stories?.description}
         image={heroSections?.stories?.image || ''}
         id={heroSections?.stories?.id}
         buttonColor={secondaryBackgroundColor}
       />
-      <StoriesListDisplay
-        title={sectionTitles.stories || 'Những kỉ niệm của chúng tôi'}
-        listData={storyOverviews || {}}
-      />
+      <StoriesListDisplay title={sectionTitles.stories || 'Những kỉ niệm của chúng tôi'} listData={storyOverviews || {}} />
     </div>
   );
 }
